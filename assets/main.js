@@ -48,6 +48,30 @@ displayAQ();
 
 // Jordan
 
+function setBackground () {
+    var client_id = "RCxWMwEhzgzUqQu7IsYsENaOYusewqJSRQ2WcPni-Es";
+    var query = $("#backgroundInput").val().trim();
+    var unsplash = "https://api.unsplash.com/photos/random?&query="+ query + "&client_id=" + client_id;
+    //console.log(unsplash);
+
+    $.ajax({
+        url: unsplash,
+        method: "GET"
+    }).then(function (response) {
+        var imageUrl = response.urls["full"];
+        console.log(imageUrl);
+        $("body")
+            .css("background-image", "url(" + imageUrl + ")")
+            .css("background-position", "center")
+            .css("background-size", "cover");
+    });
+}
+//set Background
+setBackground();
+$("#backgroundBtn").on("click", function() {
+    setBackground();
+})
+
 function displayQuote () {
 
 var quoteURL = "https://favqs.com/api/qotd";
@@ -60,7 +84,6 @@ $.ajax({
     $("#quote").text(response.quote.body);
     $("#quoteAuthor").text("-" + response.quote.author);
 });
-
 
 }
 // generates a quote
