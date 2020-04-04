@@ -33,7 +33,7 @@ displayAQ();
 
 function setBackground () {
     var client_id = "RCxWMwEhzgzUqQu7IsYsENaOYusewqJSRQ2WcPni-Es";
-    var query = "space";
+    var query = $("#backgroundInput").val().trim();
     var unsplash = "https://api.unsplash.com/photos/random?&query="+ query + "&client_id=" + client_id;
     //console.log(unsplash);
 
@@ -49,8 +49,11 @@ function setBackground () {
             .css("background-size", "cover");
     });
 }
-
+//set Background
 setBackground();
+$("#backgroundBtn").on("click", function() {
+    setBackground();
+})
 
 function displayQuote () {
 
