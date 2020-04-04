@@ -27,9 +27,17 @@ function displayAQ(){
 }
 
 function printAqReadout(){
-    $("#airQualityOutput").text(""+averageAirQuality.toFixed(2)+" PPM");
+    $("#airQualityOutput").text(""+averageAirQuality.toFixed(2)+" AQI");
     switch(averageAirQuality){
-    
+        case averageAirQuality <= 50:
+            console.log("HELL YAEH");
+            break;
+        case averageAirQuality >= 50:
+            console.log("oh no");
+            break;
+        default :
+            console.log("TEST");
+            break;
     }
 }
 
