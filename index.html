@@ -7,6 +7,7 @@
     <title>Tile Homepage</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/styles.css">
+    Access-Control-Allow-Origin: 
 </head>
 
 <body>
@@ -31,16 +32,18 @@
 
                 <div class="tile is-vertical">
                     <!-- Ben -->
-                    <!-- Spotify/Mystery Api  -->
+                    <!-- Bands In Town  -->
                         <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Spotify</p>
+                            <p class="title">Bands In Town</p>
                             <p class="subtitle">Top tile</p>
                         </article>
-
+                    <!-- Holidays Api  -->        
                         <article class="tile is-child notification is-vertical is-warning">
-                            <p class="title">Maybe Youtube, if I can figure it out</p>
-                            <p class="subtitle">Bottom tile</p>
+                            <p class="title">Holiday</p>
+                            <p>Search</p>
+                            <form id="holidayForm"><input class="holidaySearch"></input> <button type="submit" id="holidaySubmit">Search</button></form>
+                            <div class="holidayResultsClass" id="holidayResultsID"> </div>
                         </article>
                     </div>
                     <!--  -->
@@ -88,8 +91,9 @@
                 
 
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="./assets/main.js"></script>
+
     </body>
 
 </html>
