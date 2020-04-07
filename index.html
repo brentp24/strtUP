@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    
+
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
         <div class="navbar-item has-dropdown">
           <a class="navbar-link">
@@ -18,14 +18,14 @@
           </a>
       
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Overview
+            <a class="navbar-item linkUnsplash">
+                Unsplash
             </a>
-            <a class="navbar-item">
-              Elements
+            <a class="navbar-item linkQuote">
+              Quote of the day
             </a>
-            <a class="navbar-item">
-              Components
+            <a class="navbar-item linkDictionary">
+              Dictionary
             </a>
             <hr class="navbar-divider">
             <div class="navbar-item">
@@ -40,7 +40,7 @@
             <div class="tile">
                 <!-- Jordan -->
                 <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification is-primary">
+                    <article class="tile is-child notification is-primary unSplashTile">
                         <p class="title">Background</p>
                         <p class="subtitle">Use a keyword to search Unslash for a new background image.</p>
                         <div class="field">
@@ -52,7 +52,7 @@
                             <button id="backgroundBtn" class="button is-link is-light">Submit</button>
                         </div>
                     </article>
-                    <article class="tile is-child notification is-warning">
+                    <article class="tile is-child notification is-warning quoteTile">
                         <p class="title">Quote of the day</p>
                         <p id="quote"></p>
                         <p id="quoteAuthor"></p>
@@ -67,7 +67,7 @@
 
                     <!-- Dictionary  -->
                         <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification dictionaryStyle">
+                        <article class="tile is-child notification dictionaryStyle dictionaryTile">
                             <p class="title">Dictionary</p>
                             <input class="searchedWord input is-small">
                             <button class="button dictionarySearch">Search</button>

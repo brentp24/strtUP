@@ -130,7 +130,7 @@ $.ajax({
 
 //End Brent's JS
 
-//navBar
+//navBar hide and show function
 
 $(".navbar-link").on("click", function(){
     var navDropDown = $(".navbar-dropdown");
@@ -141,7 +141,30 @@ $(".navbar-link").on("click", function(){
     }
 })
 
-
+$(".linkUnsplash").on("click", function(){
+    var unSplashTile = $(".unSplashTile");
+    if (unSplashTile.hasClass("hideTile")){
+         unSplashTile.removeClass("hideTile");
+    } else {
+        unSplashTile.addClass("hideTile");
+    }
+});
+$(".linkQuote").on("click", function(){
+    var quoteTile = $(".quoteTile");
+    if (quoteTile.hasClass("hideTile")){
+         quoteTile.removeClass("hideTile");
+    } else {
+        quoteTile.addClass("hideTile");
+    }
+});
+$(".linkDictionary").on("click", function(){
+    var dictionaryTile = $(".dictionaryTile");
+    if (dictionaryTile.hasClass("hideTile")){
+         dictionaryTile.removeClass("hideTile");
+    } else {
+        dictionaryTile.addClass("hideTile");
+    }
+});
 
  
 
