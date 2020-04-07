@@ -165,6 +165,47 @@ $(".linkDictionary").on("click", function(){
         dictionaryTile.addClass("hideTile");
     }
 });
+$(".linkHoliday").on("click", function(){
+    var holidayTile = $(".holidayTile");
+    if (holidayTile.hasClass("hideTile")){
+         holidayTile.removeClass("hideTile");
+    } else {
+        holidayTile.addClass("hideTile");
+    }
+});
+$(".linkSports").on("click", function(){
+    var sportsTile = $(".sportsTile");
+    if (sportsTile.hasClass("hideTile")){
+         sportsTile.removeClass("hideTile");
+    } else {
+        sportsTile.addClass("hideTile");
+    }
+});
+$(".linkAir").on("click", function(){
+    var airTile = $(".airTile");
+    if (airTile.hasClass("hideTile")){
+         airTile.removeClass("hideTile");
+    } else {
+        airTile.addClass("hideTile");
+    }
+});
+$(".linkStrava").on("click", function(){
+    var stravaTile = $(".stravaTile");
+    if (stravaTile.hasClass("hideTile")){
+         stravaTile.removeClass("hideTile");
+    } else {
+        stravaTile.addClass("hideTile");
+    }
+});
+$(".linkZomato").on("click", function(){
+    var zomatoTile = $(".zomatoTile");
+    if (zomatoTile.hasClass("hideTile")){
+         zomatoTile.removeClass("hideTile");
+    } else {
+        zomatoTile.addClass("hideTile");
+    }
+});
+
 
  
 
