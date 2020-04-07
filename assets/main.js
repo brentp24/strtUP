@@ -5,21 +5,21 @@
 // George
 let test;
 let averageArray = [];
-function displayAQ(){
+function displayAQ() {
     let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from=2020-04-04&order_by=date&parameter=pm25"
     $.ajax({
         url: airQualityUrl,
         method: "GET"
-    }) .then(function(response){
-        console.log(response);
-        for(result in response.results){
+    }).then(function (response) {
+        //console.log(response);
+        for (result in response.results) {
             averageArray[result] = response.results[result].value;
         }
         average = averageArray.reduce((a, b) => a + b, 0);
-        average = average/averageArray.length;
+        average = average / averageArray.length;
         $("#airQualityOutput").text(average.toFixed(2));
 
-    }) .catch(function(error){
+    }).catch(function (error) {
         console.log(error);
     })
 }
@@ -31,10 +31,10 @@ displayAQ();
 
 // Jordan
 
-function setBackground () {
+function setBackground() {
     var client_id = "RCxWMwEhzgzUqQu7IsYsENaOYusewqJSRQ2WcPni-Es";
     var query = $("#backgroundInput").val().trim();
-    var unsplash = "https://api.unsplash.com/photos/random?&query="+ query + "&client_id=" + client_id;
+    var unsplash = "https://api.unsplash.com/photos/random?&query=" + query + "&client_id=" + client_id;
     //console.log(unsplash);
 
     $.ajax({
@@ -51,22 +51,22 @@ function setBackground () {
 }
 //set Background
 setBackground();
-$("#backgroundBtn").on("click", function() {
+$("#backgroundBtn").on("click", function () {
     setBackground();
 })
 
-function displayQuote () {
+function displayQuote() {
 
-var quoteURL = "https://favqs.com/api/qotd";
+    var quoteURL = "https://favqs.com/api/qotd";
 
-$.ajax({
-    url: quoteURL,
-    method: "GET"
-}).then(function (response) {
-    //console.log(response);
-    $("#quote").text(response.quote.body);
-    $("#quoteAuthor").text("-" + response.quote.author);
-});
+    $.ajax({
+        url: quoteURL,
+        method: "GET"
+    }).then(function (response) {
+        //console.log(response);
+        $("#quote").text(response.quote.body);
+        $("#quoteAuthor").text("-" + response.quote.author);
+    });
 
 }
 // generates a quote
@@ -75,24 +75,96 @@ $("#newQuoteBtn").on("click", function () {
     displayQuote();
 });
 
+// weather Widget
+// variable for user input of city
+var city;
 
-// Ben's Java
-// Spotify
+//grab button add event listener
+$("#cityBtn").on("click", function () {
+    //assigns user input to city
+    city = $("#cityInput").val().trim();
+    //if no text in input return nothing
+    if ($("#cityInput").val() === "") {
+        return;
+    }
+    //display city info
+    displayCityInfo();
+});
 
-// Youtube
+// City Info 
+function displayCityInfo() {
+    var apiKey = "ce453ac74e12415c59da090746a2c162";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ce453ac74e12415c59da090746a2c162";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        var date = new Date(response.dt * 1000).toLocaleDateString();
+        var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+        //console.log(icon);
+        //console.log(response);
 
-// The end of Ben.. 's Java
+        $("#nameDateIcon").html(response.name + " " + "(" + date + ")").addClass("currentDayHeader").append(icon);
+        $("#temperature").html("Temperature: " + response.main.temp + " °F");
+        $("#humidity").html("Humidity: " + response.main.humidity + " %");
+        $("#windSpeed").html("Wind Speed: " + response.wind.speed + " MPH");
 
+        // UV Index API Call
+        $.ajax({
+            url: "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
+            method: "GET"
+        }).then(function (response) {
+            //console.log(response);
+            $("#UVIndex").html("UV Index: ");
+            $("#UVIndex").append("<button id=uvindex>" + response.value + "</button>");
+        })
 
-
-
-//Brent's JS
-
-
-
-//End Brent's JS
-
-
+    }).catch(function (error) {
+        console.log(error);
+    })
+    //five day forecast
+    $.ajax({
+        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        //day1
+        var date1 = new Date(response.list[3].dt * 1000).toLocaleDateString();
+        var icon1 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[3].weather[0].icon + ".png");
+        $("#date1").html(date1);
+        $("#icon1").html(icon1);
+        $("#temp1").html("Temperature: " + response.list[3].main.temp + " °F");
+        $("#humidity1").html("Humidity: " + response.list[3].main.humidity + " %");
+        //day2
+        var date2 = new Date(response.list[11].dt * 1000).toLocaleDateString();
+        var icon2 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[11].weather[0].icon + ".png");
+        $("#date2").html(date2);
+        $("#icon2").html(icon2);
+        $("#temp2").html("Temperature: " + response.list[11].main.temp + " °F");
+        $("#humidity2").html("Humidity: " + response.list[11].main.humidity + " %");
+        //day3
+        var date3 = new Date(response.list[19].dt * 1000).toLocaleDateString();
+        var icon3 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[19].weather[0].icon + ".png");
+        $("#date3").html(date3);
+        $("#icon3").html(icon3);
+        $("#temp3").html("Temperature: " + response.list[19].main.temp + " °F");
+        $("#humidity3").html("Humidity: " + response.list[19].main.humidity + " %");
+        //day4
+        var date4 = new Date(response.list[27].dt * 1000).toLocaleDateString();
+        var icon4 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[27].weather[0].icon + ".png");
+        $("#date4").html(date4);
+        $("#icon4").html(icon4);
+        $("#temp4").html("Temperature: " + response.list[27].main.temp + " °F");
+        $("#humidity4").html("Humidity: " + response.list[27].main.humidity + " %");
+        //day5
+        var date5 = new Date(response.list[35].dt * 1000).toLocaleDateString();
+        var icon5 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[35].weather[0].icon + ".png");
+        $("#date5").html(date5);
+        $("#icon5").html(icon5);
+        $("#temp5").html("Temperature: " + response.list[35].main.temp + " °F");
+        $("#humidity5").html("Humidity: " + response.list[35].main.humidity + " %");
+    })
+}
 
 
 
