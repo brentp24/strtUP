@@ -29,6 +29,9 @@ ol {
     background-color: #333333;
     color: #e1f4f3;
 }
+.is-active {
+    display: block;
+}
 
 
 

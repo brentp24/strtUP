@@ -130,8 +130,20 @@ $.ajax({
 
 //End Brent's JS
 
+//navBar
+
+$(".navbar-link").on("click", function(){
+    var navDropDown = $(".navbar-dropdown");
+    if (navDropDown.hasClass("is-active")){
+         navDropDown.removeClass("is-active");
+    } else {
+        navDropDown.addClass("is-active");
+    }
+})
 
 
+
+ 
 
 
 
