@@ -34,18 +34,22 @@
                         <br>
                         <button id="newQuoteBtn" class="button is-black">New Quote</button>
                     </article>
-                    <article class="tile is-child notification is-warning">
-                        <p class="title">Weather</p>
-                        <div class="field">
-                            <label class="label">Search by City Name:</label>
-                            <div class="control">
-                                <input id="cityInput" class="input" type="text" placeholder="Name of City">
+                    <article class="tile is-child notification color-black">
+                        <p id="cityName" class="title has-text-white">Weather</p>
+                            <label class="label has-text-white">Search by City Name:</label>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input id="cityInput" class="input" type="text" placeholder="Name of City">
+                                    </div>
+                                    <br>
+                                    <div class="field">
+                                        <button id="cityBtn" class="button is-link is-light">Search</button>
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <button id="cityBtn" class="button is-link is-light">Search</button>
-                        </div>
-                        <div id="currentWeather" class="column">
-                            <div id="nameDateIcon"></div>
+                        <div id="currentWeather" class="column has-text-white">
+                            <div class="header" id="nameDateIcon"></div>
                             <br>
                             <div id="temperature"></div>
                             <br>
@@ -56,44 +60,44 @@
                             <div id="UVIndex"></div>
                             <br>
                         </div>
-                        <div id="forecastHeader" class=""></div>
-            <div id="fiveDays" class="columns">
-                <div id="day1" class="forecastBlock column">
-                    <div class="forecastDate" id="date1"></div>
-                    <div id="icon1"></div>
-                    <div id="temp1"></div>
-                    <br>
-                    <div id="humidity1"></div>
-                </div>
-                <div id="day2" class="forecastBlock column">
-                    <div class="forecastDate" id="date2"></div>
-                    <div id="icon2"></div>
-                    <div id="temp2"></div>
-                    <br>
-                    <div id="humidity2"></div>
-                </div>
-                <div id="day3" class="forecastBlock column">
-                    <div class="forecastDate" id="date3"></div>
-                    <div id="icon3"></div>
-                    <div id="temp3"></div>
-                    <br>
-                    <div id="humidity3"></div>
-                </div>
-                <div id="day4" class="forecastBlock column">
-                    <div class="forecastDate" id="date4"></div>
-                    <div id="icon4"></div>
-                    <div id="temp4"></div>
-                    <br>
-                    <div id="humidity4"></div>
-                </div>
-                <div id="day5" class="forecastBlock column">
-                    <div class="forecastDate" id="date5"></div>
-                    <div id="icon5"></div>
-                    <div id="temp5"></div>
-                    <br>
-                    <div id="humidity5"></div>
-                </div>
-            </div>
+                        <div id="forecastHeader" class="header has-text-white"></div>
+                        <div id="fiveDays" class="columns has-text-white">
+                            <div id="day1" class="forecastBlock column">
+                                <div class="header" id="date1"></div>
+                                <div id="icon1"></div>
+                                <div id="temp1"></div>
+                                <br>
+                                <div id="humidity1"></div>
+                            </div>
+                            <div id="day2" class="forecastBlock column">
+                                <div class="header" id="date2"></div>
+                                <div id="icon2"></div>
+                                <div id="temp2"></div>
+                                <br>
+                                <div id="humidity2"></div>
+                            </div>
+                            <div id="day3" class="forecastBlock column">
+                                <div class="header" id="date3"></div>
+                                <div id="icon3"></div>
+                                <div id="temp3"></div>
+                                <br>
+                                <div id="humidity3"></div>
+                            </div>
+                            <div id="day4" class="forecastBlock column">
+                                <div class="header" id="date4"></div>
+                                <div id="icon4"></div>
+                                <div id="temp4"></div>
+                                <br>
+                                <div id="humidity4"></div>
+                            </div>
+                            <div id="day5" class="forecastBlock column">
+                                <div class="header" id="date5"></div>
+                                <div id="icon5"></div>
+                                <div id="temp5"></div>
+                                <br>
+                                <div id="humidity5"></div>
+                            </div>
+                        </div>
                     </article>
                 </div>
                 <!--  -->
@@ -102,13 +106,13 @@
                     <!-- Ben -->
 
                     <!-- Bands In Town  -->
-                        <div class="tile is-parent is-vertical">
+                    <div class="tile is-parent is-vertical">
 
                         <article class="tile is-child notification is-primary">
                             <p class="title">Bands In Town</p>
                             <p class="subtitle">Top tile</p>
                         </article>
-                    <!-- Holidays Api  -->        
+                        <!-- Holidays Api  -->
                         <article class="tile is-child is-vertical holidayStyle">
                             <p class="title holidayStyle">Upcoming Holiday</p>
                             <div class="holidayResultsClass"> </div>
@@ -157,14 +161,16 @@
                         </article>
                     </div>
                 </div>
-
-
             </div>
+        </div>
+    </div>
+    <footer class="columns">
+        <div id="backgroundPhotographer" class="bottom-left column"></div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/main.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="./assets/main.js"></script>
-
-    </body>
+</body>
 
 </html>

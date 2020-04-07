@@ -36,13 +36,14 @@ function setBackground() {
     var query = $("#backgroundInput").val().trim();
     var unsplash = "https://api.unsplash.com/photos/random?&query=" + query + "&client_id=" + client_id;
     //console.log(unsplash);
-
+    var unsplashWebsite = "https://unsplash.com/";
     $.ajax({
         url: unsplash,
         method: "GET"
     }).then(function (response) {
         var imageUrl = response.urls["full"];
-        console.log(imageUrl);
+        $("#backgroundPhotographer").html("Photo by <a href="+response.links.html+">"+response.user.name+"</a>"+ " on <a href="+unsplashWebsite+">Unsplash</a>");
+        //console.log(response);
         $("body")
             .css("background-image", "url(" + imageUrl + ")")
             .css("background-position", "center")
@@ -93,6 +94,7 @@ $("#cityBtn").on("click", function () {
 
 // City Info 
 function displayCityInfo() {
+    $("#cityName").html(city.toUpperCase() + " ");
     var apiKey = "ce453ac74e12415c59da090746a2c162";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ce453ac74e12415c59da090746a2c162";
     $.ajax({
@@ -123,6 +125,7 @@ function displayCityInfo() {
         console.log(error);
     })
     //five day forecast
+    $("forecastHeader").html("5-day Forecast");
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey,
         method: "GET"
