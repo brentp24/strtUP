@@ -22,8 +22,13 @@
 .holidayResultsClass {
     font-weight: bold;
 }
-
-
+ol {
+    list-style-type: decimal;
+}
+.dictionaryStyle{
+    background-color: #333333;
+    color: #e1f4f3;
+}
 
 
 
