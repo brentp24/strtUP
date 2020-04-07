@@ -13,3 +13,24 @@
 .color-blue{
     background-color: #e1f4f3;
 }
+.holidayStyle{
+    background-color: #706c61;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+}
+.holidayResultsClass {
+    font-weight: bold;
+}
+ol {
+    list-style-type: decimal;
+}
+.dictionaryStyle{
+    background-color: #333333;
+    color: #e1f4f3;
+}
+
+
+
+
+

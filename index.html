@@ -39,20 +39,23 @@
 
                 <div class="tile is-vertical">
                     <!-- Ben -->
-                    <!-- Spotify/Mystery Api  -->
-                    <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">Spotify</p>
-                            <p class="subtitle">Top tile</p>
-                        </article>
 
-                        <article class="tile is-child notification is-vertical is-warning">
-                            <p class="title">Maybe Youtube, if I can figure it out</p>
-                            <p class="subtitle">Bottom tile</p>
+                    <!-- Dictionary  -->
+                        <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification dictionaryStyle">
+                            <p class="title">Dictionary</p>
+                            <input class="searchedWord input is-small">
+                            <button class="button dictionarySearch">Search</button>
+                            <ol class="subtitle definitionWrapper">
+                            </ol>
+                        </article>
+                    <!-- Holidays Api  -->        
+                        <article class="tile is-child is-vertical holidayStyle">
+                            <p class="title holidayStyle">Upcoming Holiday</p>
+                            <div class="holidayResultsClass"> </div>
+                            <p class="holidayDate"></p>
                         </article>
                     </div>
-                    <!--  -->
-
                     <!-- George - Air quality % Sports -->
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-info">
@@ -96,8 +99,11 @@
 
 
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="./assets/main.js"></script>
-</body>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./assets/main.js"></script>
+
+    </body>
 
 </html>
