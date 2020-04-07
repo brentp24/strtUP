@@ -56,7 +56,10 @@ $.ajax({
 }).then(function (response) {
     var nextHoliday = response.holidays[0];
     $(".holidayResultsClass").text(nextHoliday.name);
-    $(".holidayDate").text(nextHoliday.date)
+    //Please note, I am using the free Holiday API. This only grants access to 2019 holiday's, not 2020. 
+    //I used moment.js to change the date to this year's date, even though it will not be accurate for holidays with changing dates
+    var thisYearDate = moment(nextHoliday.date).add(1, 'year').format("MMMM Do YYYY")
+    $(".holidayDate").text(thisYearDate)
 })
 
 
