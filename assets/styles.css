@@ -27,6 +27,7 @@
 .holidayResultsClass {
     font-weight: bold;
 }
+
 /* Bottom left text */
 .bottom-left {
     position: relative;
@@ -39,6 +40,15 @@
     font-size: large;
 }
 .title{
+    color: #e1f4f3;
+}
+
+
+ol {
+    list-style-type: decimal;
+}
+.dictionaryStyle{
+    background-color: #333333;
     color: #e1f4f3;
 }
 

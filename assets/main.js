@@ -12,6 +12,7 @@ function displayAQ() {
         method: "GET"
     }).then(function (response) {
         //console.log(response);
+
         for (result in response.results) {
             averageArray[result] = response.results[result].value;
         }
@@ -91,6 +92,7 @@ $("#cityBtn").on("click", function () {
     //display city info
     displayCityInfo();
 });
+
 
 // City Info 
 function displayCityInfo() {
@@ -183,6 +185,30 @@ var BandsInTownUrl= ""
 
 
 
+
+//Dictionary function listener
+$(".dictionarySearch").on("click", function () {
+    dictionarySearch();
+});
+// Dictionary search function
+function dictionarySearch() {
+    var apiKey = "?key=402305c3-af98-4dcf-93f0-d1b3357c036a"
+    var dictionaryUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+    var searchedWord = $(".searchedWord").val()
+    var completeDictionaryUrl = dictionaryUrl + searchedWord + apiKey
+    // Api call function
+    $.ajax({
+        url: completeDictionaryUrl,
+        method: "GET"
+    }).then(function (response) {
+        $(".definitionWrapper").empty();
+        // For loop to append definitions 
+        for (i = 0; i < response[0].shortdef.length; i++) {
+            var newLiTag = $("<Li>")
+            $(".definitionWrapper").append(newLiTag.text(response[0].shortdef[i]));
+        }
+    })
+};
 
 // Holiday Api
 var currentDay = moment().format("DD");
