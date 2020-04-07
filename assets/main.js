@@ -3,40 +3,51 @@
 
 
 // George
-let test;
-let averageArray = [];
+const currentDate = moment().format("YYYY-MM-DD");
 function displayAQ() {
-    let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from=2020-04-04&order_by=date&parameter=pm25"
+    let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from="+currentDate+"&order_by=date&parameter=pm25"
     $.ajax({
         url: airQualityUrl,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        let averageArray = [];
         for (result in response.results) {
             averageArray[result] = response.results[result].value;
         }
         average = averageArray.reduce((a, b) => a + b, 0);
         average = average / averageArray.length;
-        $("#airQualityOutput").text(average.toFixed(2));
+        let airQualityIndex = average*4; //creating AQI from average pm2.5 air data
+
+        printAqReadout(airQualityIndex); //print information to widget
 
     }).catch(function (error) {
         console.log(error);
     })
 }
 
-function printAqReadout(){
-    $("#airQualityOutput").text(""+averageAirQuality.toFixed(2)+" AQI");
-    switch(averageAirQuality){
-        case averageAirQuality <= 50:
-            console.log("HELL YAEH");
-            break;
-        case averageAirQuality >= 50:
-            console.log("oh no");
-            break;
-        default :
-            console.log("TEST");
-            break;
+function printAqReadout(airQualityIndex){
+    // printing different options depending on 
+    if(airQualityIndex <= 50){
+        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
+        $("#airQualityReadout").text("Good");
+        $("#airQualityReadout").css("background-color","green");
     }
+    else if(airQualityIndex > 50 && airQualityIndex <= 90){
+        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
+        $("#airQualityReadout").text("Moderate");
+        $("#airQualityReadout").css("background-color","Yellow");
+    }
+    else if(airQualityIndex > 90 && airQualityIndex <= 150){
+        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
+        $("#airQualityReadout").text("Unhealthy");
+        $("#airQualityReadout").css("background-color","Red");
+    }
+    else{
+        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
+        $("#airQualityReadout").text("Deathly");
+        $("#airQualityReadout").css("background-color","purple");
+    }
+    
 }
 
 displayAQ();
