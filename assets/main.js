@@ -2,29 +2,29 @@
 
 
 
-// George
-let test;
-let averageArray = [];
-function displayAQ(){
-    let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from=2020-04-04&order_by=date&parameter=pm25"
-    $.ajax({
-        url: airQualityUrl,
-        method: "GET"
-    }) .then(function(response){
-        console.log(response);
-        for(result in response.results){
-            averageArray[result] = response.results[result].value;
-        }
-        average = averageArray.reduce((a, b) => a + b, 0);
-        average = average/averageArray.length;
-        $("#airQualityOutput").text(average.toFixed(2));
+// // George
+// let test;
+// let averageArray = [];
+// function displayAQ(){
+//     let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from=2020-04-04&order_by=date&parameter=pm25"
+//     $.ajax({
+//         url: airQualityUrl,
+//         method: "GET"
+//     }) .then(function(response){
+//         console.log(response);
+//         for(result in response.results){
+//             averageArray[result] = response.results[result].value;
+//         }
+//         average = averageArray.reduce((a, b) => a + b, 0);
+//         average = average/averageArray.length;
+//         $("#airQualityOutput").text(average.toFixed(2));
 
-    }) .catch(function(error){
-        console.log(error);
-    })
-}
+//     }) .catch(function(error){
+//         console.log(error);
+//     })
+// }
 
-displayAQ();
+// displayAQ();
 
 // end George
 
@@ -76,12 +76,33 @@ $("#newQuoteBtn").on("click", function () {
 });
 
 
-// Ben's Java
-// Bands In Town
+// Ben's JavaScript
 
-var BandsInTownID = ""
-var artistID = ""
-var BandsInTownUrl= ""
+// Dictionary Widget
+
+$(".dictionarySearch").on("click", function(){
+    dictionarySearch();
+});
+
+function dictionarySearch(){
+
+var apiKey = "?key=402305c3-af98-4dcf-93f0-d1b3357c036a"
+var dictionaryUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" 
+var searchedWord = $(".searchedWord").val()
+var completeDictionaryUrl = dictionaryUrl + searchedWord + apiKey
+console.log(completeDictionaryUrl)
+
+$.ajax({
+    url: completeDictionaryUrl,
+    method: "GET"
+}).then(function (response) {
+    var newPTag = $("<p>")
+    console.log(response[0].shortdef.length)
+    for (i = 0; i < response[0].shortdef.length; i++){
+        $(".definitionWrapper").append(newPTag.text(response[0].shortdef[i]));
+    }
+})
+}
 
 
 
