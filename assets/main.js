@@ -4,53 +4,67 @@
 
 // George
 const currentDate = moment().format("YYYY-MM-DD");
+let airQualityIndexDisplay = [];
+
+displayAQ();
+
 function displayAQ() {
-    let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from="+currentDate+"&order_by=date&parameter=pm25"
-    $.ajax({
-        url: airQualityUrl,
-        method: "GET"
-    }).then(function (response) {
-        let averageArray = [];
-        for (result in response.results) {
-            averageArray[result] = response.results[result].value;
-        }
-        average = averageArray.reduce((a, b) => a + b, 0);
-        average = average / averageArray.length;
-        let airQualityIndex = average*4; //creating AQI from average pm2.5 air data
+    let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
+    for(city in aqiCityArray){
+        let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city="+aqiCityArray[city]+"&date_from="+currentDate+"&order_by=date&parameter=pm25"
+        $.ajax({
+            url: airQualityUrl,
+            method: "GET"
+        }).then(function (response) {
+            console.log(airQualityUrl);
+            let averageArray = [];
+            for (result in response.results) {
+                averageArray[result] = response.results[result].value;
+            }
+            //creating AQI from average pm2.5 air data 
+            average = averageArray.reduce((a, b) => a + b, 0);
+            average = average / averageArray.length;
+            let airQualityIndex = average*4;
+            
+            //appending to printout array
+            airQualityIndexDisplay.push(airQualityIndex); 
 
-        printAqReadout(airQualityIndex); //print information to widget
+            //print information to widget
+            printAqReadout(airQualityIndex); 
 
-    }).catch(function (error) {
-        console.log(error);
-    })
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
 }
 
 function printAqReadout(airQualityIndex){
-    // printing different options depending on 
-    if(airQualityIndex <= 50){
-        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
-        $("#airQualityReadout").text("Good");
-        $("#airQualityReadout").css("background-color","green");
-    }
-    else if(airQualityIndex > 50 && airQualityIndex <= 90){
-        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
-        $("#airQualityReadout").text("Moderate");
-        $("#airQualityReadout").css("background-color","Yellow");
-    }
-    else if(airQualityIndex > 90 && airQualityIndex <= 150){
-        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
-        $("#airQualityReadout").text("Unhealthy");
-        $("#airQualityReadout").css("background-color","Red");
-    }
-    else{
-        $("#airQualityOutput").text(""+airQualityIndex.toFixed(0)+" ");
-        $("#airQualityReadout").text("Deathly");
-        $("#airQualityReadout").css("background-color","purple");
+    const aqiCityNameDisplay = ["Salt Lake City", "New York City", "Los Angles"]; //Creating separtate arrray with displayed names
+    for(city in aqiCityNameDisplay){
+        $("#airQualityOutput"+city+"").text(aqiCityNameDisplay[city]);
+
+        // printing different options depending on the quality of the air
+        if(airQualityIndexDisplay[city] <= 50){
+            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Good");
+            $("#airQualityReadout"+city+"").css("background-color","green");
+        }
+        else if(airQualityIndexDisplay[city] > 50 && airQualityIndexDisplay[city] <= 90){
+            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Moderate");
+            $("#airQualityReadout"+city+"").css("background-color","Yellow");
+        }
+        else if(airQualityIndexDisplay[city] > 90 && airQualityIndexDisplay[city] <= 150){
+            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Unhealthy");
+            $("#airQualityReadout"+city+"").css("background-color","Red");
+        }
+        else{
+            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Deathly");
+            $("#airQualityReadout"+city+"").css("background-color","purple");
+        }
     }
     
 }
 
-displayAQ();
 
 // end George
 
@@ -68,7 +82,7 @@ function setBackground() {
         method: "GET"
     }).then(function (response) {
         var imageUrl = response.urls["full"];
-        console.log(imageUrl);
+        // console.log(imageUrl);
         $("body")
             .css("background-image", "url(" + imageUrl + ")")
             .css("background-position", "center")

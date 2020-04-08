@@ -30,7 +30,27 @@ ol {
     color: #e1f4f3;
 }
 
+.aqi-tile {
+    color: #ffffff;
+}
 
+.aqi-title{
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
 
+.aqi-readout{
+    margin-bottom: .2rem;
+    display: flex;
+    font-weight: 600;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.aqi-readout-box{
+    padding: .2rem .5rem;
+    border-radius: 3px;
+}
 
 
