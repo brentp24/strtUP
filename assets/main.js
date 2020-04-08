@@ -43,7 +43,7 @@ function setBackground() {
     }).then(function (response) {
         var imageUrl = response.urls["full"];
         console.log(imageUrl);
-        $("body")
+        $("html")
             .css("background-image", "url(" + imageUrl + ")")
             .css("background-position", "center")
             .css("background-size", "cover");
@@ -130,17 +130,7 @@ $.ajax({
 
 //End Brent's JS
 
-//navBar hide and show function
-
-$(".navbar-link").on("click", function(){
-    var navDropDown = $(".navbar-dropdown");
-    if (navDropDown.hasClass("is-active")){
-         navDropDown.removeClass("is-active");
-    } else {
-        navDropDown.addClass("is-active");
-    }
-})
-
+// NavBar hide and show listeners
 $(".linkUnsplash").on("click", function(){
     var unSplashTile = $(".unSplashTile");
     if (unSplashTile.hasClass("hideTile")){
