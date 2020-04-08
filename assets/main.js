@@ -95,14 +95,31 @@ function printSports(){
         //for loop to add three items into each row
         for(j=0; j<3; j++){
             let colDivNode = $("<div>").addClass("column score-background");
-            colDivNode.text("test");
+            let gameTeams = $("<p>").text(""+sportsScores[(i*3)+j].homeTeam+" at "+sportsScores[(i*3)+j].awayTeam+"");
+            let gameScore = $("<p>").text(""+sportsScores[(i*3)+j].homeScore+" - "+sportsScores[(i*3)+j].awayScore+"");
+            colDivNode.append(gameTeams, gameScore);
             rowDivNode.append(colDivNode);
         }
         $("#scoreContainer").append(rowDivNode);
     }
 }
 // end George
-
+// function printSports(){
+//     // console.log(Math.ceil(sportsScores.length/3));
+//     //for loop to create rows for the sports container then populate each row
+//     for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
+//         let rowDivNode = $("<div>").addClass("columns column-spacer");
+//         //for loop to add three items into each row
+//         for(j=0; j<3; j++){
+//             let colDivNode = $("<div>").addClass("column score-background");
+//             // let gameTeams = $("<p>").text(""+sportsScores[0].homeTeam+" at "+sportsScores[0].awayTeam+"")
+//             // let gameScore = $("<p>").text(""+portsScores[0].homeScore+" - "+sportsScores[0].awayScore+"")
+//             colDivNode.text("gameTeams");
+//             // rowDivNode.append(colDivNode);
+//         }
+//         $("#scoreContainer").append(rowDivNode);
+//     }
+// }
 
 // Jordan
 
