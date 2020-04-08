@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tile Homepage</title>
+    <title>strtUP</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
@@ -34,12 +34,85 @@
                         <br>
                         <button id="newQuoteBtn" class="button is-black">New Quote</button>
                     </article>
+                    <article class="tile is-child notification color-black">
+                        <p id="cityName" class="title has-text-white">Weather</p>
+                            <label class="label has-text-white">Search by City Name:</label>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input id="cityInput" class="input" type="text" placeholder="Name of City">
+                                    </div>
+                                    <br>
+                                    <div class="field">
+                                        <button id="cityBtn" class="button is-link is-light">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        <div id="currentWeather" class="column has-text-white">
+                            <div class="header" id="nameDateIcon"></div>
+                            <br>
+                            <div id="temperature"></div>
+                            <br>
+                            <div id="humidity"></div>
+                            <br>
+                            <div id="windSpeed"></div>
+                            <br>
+                            <div id="UVIndex"></div>
+                            <br>
+                        </div>
+                        <div id="forecastHeader" class="header has-text-white"></div>
+                        <div id="fiveDays" class="columns has-text-white">
+                            <div id="day1" class="forecastBlock column">
+                                <div class="header" id="date1"></div>
+                                <div id="icon1"></div>
+                                <div id="temp1"></div>
+                                <br>
+                                <div id="humidity1"></div>
+                            </div>
+                            <div id="day2" class="forecastBlock column">
+                                <div class="header" id="date2"></div>
+                                <div id="icon2"></div>
+                                <div id="temp2"></div>
+                                <br>
+                                <div id="humidity2"></div>
+                            </div>
+                            <div id="day3" class="forecastBlock column">
+                                <div class="header" id="date3"></div>
+                                <div id="icon3"></div>
+                                <div id="temp3"></div>
+                                <br>
+                                <div id="humidity3"></div>
+                            </div>
+                            <div id="day4" class="forecastBlock column">
+                                <div class="header" id="date4"></div>
+                                <div id="icon4"></div>
+                                <div id="temp4"></div>
+                                <br>
+                                <div id="humidity4"></div>
+                            </div>
+                            <div id="day5" class="forecastBlock column">
+                                <div class="header" id="date5"></div>
+                                <div id="icon5"></div>
+                                <div id="temp5"></div>
+                                <br>
+                                <div id="humidity5"></div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
                 <!--  -->
 
                 <div class="tile is-vertical">
                     <!-- Ben -->
 
+
+                    <!-- Bands In Town  -->
+                    <div class="tile is-parent is-vertical">
+
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">Bands In Town</p>
+                            <p class="subtitle">Top tile</p>
+                          
                     <!-- Dictionary  -->
                         <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification dictionaryStyle">
@@ -48,8 +121,9 @@
                             <button class="button dictionarySearch">Search</button>
                             <ol class="subtitle definitionWrapper">
                             </ol>
+
                         </article>
-                    <!-- Holidays Api  -->        
+                        <!-- Holidays Api  -->
                         <article class="tile is-child is-vertical holidayStyle">
                             <p class="title holidayStyle">Upcoming Holiday</p>
                             <div class="holidayResultsClass"> </div>
@@ -96,14 +170,16 @@
                         </article>
                     </div>
                 </div>
-
-
             </div>
+        </div>
+    </div>
+    <footer class="columns">
+        <div id="backgroundPhotographer" class="bottom-left column"></div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/main.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="./assets/main.js"></script>
-
-    </body>
+</body>
 
 </html>
