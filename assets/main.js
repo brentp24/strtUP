@@ -70,7 +70,6 @@ function getSportsGames(){
         url: "https://www.balldontlie.io/api/v1/games",
         method: "GET"
     }) .then(function(response){
-        console.log(response);
         for(game in response.data){
             sportsScores[game] = {
                 "homeTeam" : response.data[game].home_team.abbreviation,
@@ -79,11 +78,28 @@ function getSportsGames(){
                 "awayScore" : response.data[game].visitor_team_score
             }
         }
-        console.log(sportsScores);
+        
+        printSports();
+        
     }) .catch(function (error) {
         console.log(error);
     })
 
+}
+
+function printSports(){
+    // console.log(Math.ceil(sportsScores.length/3));
+    //for loop to create rows for the sports container then populate each row
+    for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
+        let rowDivNode = $("<div>").addClass("columns column-spacer");
+        //for loop to add three items into each row
+        for(j=0; j<3; j++){
+            let colDivNode = $("<div>").addClass("column score-background");
+            colDivNode.text("test");
+            rowDivNode.append(colDivNode);
+        }
+        $("#scoreContainer").append(rowDivNode);
+    }
 }
 // end George
 
