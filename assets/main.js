@@ -7,6 +7,7 @@ const currentDate = moment().format("YYYY-MM-DD");
 let airQualityIndexDisplay = [];
 
 displayAQ();
+getSportsGames();
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
@@ -16,7 +17,6 @@ function displayAQ() {
             url: airQualityUrl,
             method: "GET"
         }).then(function (response) {
-            console.log(airQualityUrl);
             let averageArray = [];
             for (result in response.results) {
                 averageArray[result] = response.results[result].value;
@@ -46,26 +46,45 @@ function printAqReadout(airQualityIndex){
 
         // printing different options depending on the quality of the air
         if(airQualityIndexDisplay[city] <= 50){
-            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Good");
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Good");
             $("#airQualityReadout"+city+"").css("background-color","green");
         }
         else if(airQualityIndexDisplay[city] > 50 && airQualityIndexDisplay[city] <= 90){
-            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Moderate");
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Moderate");
             $("#airQualityReadout"+city+"").css("background-color","Yellow");
         }
         else if(airQualityIndexDisplay[city] > 90 && airQualityIndexDisplay[city] <= 150){
-            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Unhealthy");
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Unhealthy");
             $("#airQualityReadout"+city+"").css("background-color","Red");
         }
         else{
-            $("#airQualityReadout"+city+"").text(""+airQualityIndexDisplay[city].toFixed(0)+" - Deathly");
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Deathly");
             $("#airQualityReadout"+city+"").css("background-color","purple");
         }
     }
     
 }
+let sportsScores = [];
+function getSportsGames(){
+    $.ajax({
+        url: "https://www.balldontlie.io/api/v1/games",
+        method: "GET"
+    }) .then(function(response){
+        console.log(response);
+        for(game in response.data){
+            sportsScores[game] = {
+                "homeTeam" : response.data[game].home_team.abbreviation,
+                "homeScore" : response.data[game].home_team_score,
+                "awayTeam" : response.data[game].visitor_team.abbreviation,
+                "awayScore" : response.data[game].visitor_team_score
+            }
+        }
+        console.log(sportsScores);
+    }) .catch(function (error) {
+        console.log(error);
+    })
 
-
+}
 // end George
 
 
@@ -276,11 +295,4 @@ $.ajax({
 
 
 //End Brent's JS
-
-
-
-
-
-
-
 
