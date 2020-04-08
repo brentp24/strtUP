@@ -39,6 +39,9 @@ ol {
     background-color: initial;
 }
 .navbar-item {
+    background-color: initial;
+}
+.navbar-link{
     background-color: white;
 }
 html { 
@@ -68,6 +71,6 @@ html {
         display: none;
     }
 }
-.linkItems {
-    float: left;
+#inlineBlock {
+    display: inline-block;
 }

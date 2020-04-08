@@ -12,39 +12,35 @@
 <body>
 
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-        <div class="navbar-item has-dropdown is-hoverable is-flex-tablet">
+        <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
                 Widgets
             </a>
             <div class="navbar-dropdown">
-                <a class="navbar-item linkUnsplash">
+                <a id="linkedItems" class="navbar-item linkUnsplash">
                     Unsplash
                 </a>
-                <a class="navbar-item linkQuote">
+                <a id="linkedItems" class="navbar-item linkQuote">
                     Quote of the day
                 </a>
-                <a class="navbar-item linkDictionary">
+                <a id="linkedItems" class="navbar-item linkDictionary">
                     Dictionary
                 </a>
-                <a class="navbar-item linkHoliday">
+                <a id="linkedItems" class="navbar-item linkHoliday">
                     Upcoming Holiday
                 </a>
-                <a class="navbar-item linkSports">
+                <a id="linkedItems" class="navbar-item linkSports">
                     Sports
                 </a>
-                <a class="navbar-item linkAir">
+                <a id="linkedItems" class="navbar-item linkAir">
                     Air Quality
                 </a>
-                <a class="navbar-item linkStrava">
+                <a id="linkedItems" class="navbar-item linkStrava">
                     Strava
                 </a>
-                <a class="navbar-item linkZomato">
+                <a id="linkedItems" class="navbar-item linkZomato">
                     Zomato
                 </a>
-                <hr class="navbar-divider">
-                <div class="navbar-item">
-                    Version 0.8.0
-                </div>
             </div>
         </div>
     </nav>
@@ -147,7 +143,7 @@
 
             </div>
             <div class="tileWrapper is-ancestor">
-                <div class="tile is-parent ">
+                <div class="tile is-parent" id="inlineBlock">
                     <div class="is-child notification is-info tile">
                     <a class="navbar-item linkUnsplash">
                         Unsplash</a>
