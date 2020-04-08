@@ -12,42 +12,49 @@
 <body>
 
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Widgets
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item linkUnsplash">
-                Unsplash
+        <div class="navbar-item has-dropdown is-hoverable is-flex-tablet">
+            <a class="navbar-link">
+                Widgets
             </a>
-            <a class="navbar-item linkQuote">
-              Quote of the day
-            </a>
-            <a class="navbar-item linkDictionary">
-              Dictionary
-            </a>
-            <a class="navbar-item linkHoliday">
-                Upcoming Holiday
-              </a>
-              <a class="navbar-item linkSports">
-                Sports
-              </a>
-              <a class="navbar-item linkAir">
-                Air Quality
-              </a>
-              <a class="navbar-item linkStrava">
-                Strava
-              </a>
-              <a class="navbar-item linkZomato">
-                Zomato
-              </a>
-            <hr class="navbar-divider">
-            <div class="navbar-item">
-              Version 0.8.0
+            <div class="navbar-dropdown">
+                <a class="navbar-item linkUnsplash">
+                    Unsplash
+                </a>
+                <a class="navbar-item linkQuote">
+                    Quote of the day
+                </a>
+                <a class="navbar-item linkDictionary">
+                    Dictionary
+                </a>
+                <a class="navbar-item linkHoliday">
+                    Upcoming Holiday
+                </a>
+                <a class="navbar-item linkSports">
+                    Sports
+                </a>
+                <a class="navbar-item linkAir">
+                    Air Quality
+                </a>
+                <a class="navbar-item linkStrava">
+                    Strava
+                </a>
+                <a class="navbar-item linkZomato">
+                    Zomato
+                </a>
+                <hr class="navbar-divider">
+                <div class="navbar-item">
+                    Version 0.8.0
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
+    </nav>
+
+
+
+
+
+
+
 
     <div class="tile is-ancestor">
         <div class="tile is-vertical ">
@@ -80,7 +87,7 @@
                     <!-- Ben -->
 
                     <!-- Dictionary  -->
-                        <div class="tile is-parent is-vertical">
+                    <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification dictionaryStyle dictionaryTile">
                             <p class="title">Dictionary</p>
                             <input class="searchedWord input is-small">
@@ -88,7 +95,7 @@
                             <ol class="subtitle definitionWrapper">
                             </ol>
                         </article>
-                    <!-- Holidays Api  -->        
+                        <!-- Holidays Api  -->
                         <article class="tile is-child is-vertical holidayStyle holidayTile">
                             <p class="title holidayStyle">Upcoming Holiday</p>
                             <div class="holidayResultsClass"> </div>
@@ -137,11 +144,34 @@
                 </div>
 
 
-            </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="./assets/main.js"></script>
 
-    </body>
+            </div>
+            <div class="tileWrapper is-ancestor">
+                <div class="tile is-parent ">
+                    <div class="is-child notification is-info tile">
+                    <a class="navbar-item linkUnsplash">
+                        Unsplash</a>
+                    <a class="navbar-item linkQuote">
+                        Quote of the day</a>
+                    <a class="navbar-item linkDictionary">
+                        Dictionary</a>
+                    <a class="navbar-item linkHoliday">
+                        Upcoming Holiday</a>
+                    <a class="navbar-item linkSports">
+                        Sports</a>
+                    <a class="navbar-item linkAir">
+                        Air Quality</a>
+                    <a class="navbar-item linkStrava">
+                        Strava</a>
+                    <a class="navbar-item linkZomato">
+                        Zomato</a>
+                </div>
+            </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="./assets/main.js"></script>
+
+</body>
 
 </html>

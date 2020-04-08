@@ -48,3 +48,26 @@ html {
     -o-background-size: cover;
     background-size: cover;
   }
+  .tileWrapper{
+      display: none;
+
+  }
+@media screen and (min-width: 1024px){
+  .tileWrapper {
+      display: none;
+  }
+  .navbar {
+      display: block;
+}}
+
+  @media screen and (max-width: 1024px){
+    .tileWrapper {
+        display: block;
+    }
+    .navbar{
+        display: none;
+    }
+}
+.linkItems {
+    float: left;
+}
