@@ -13,6 +13,11 @@
 .color-blue{
     background-color: #e1f4f3;
 }
+
+.text-blue{
+    color: #e1f4f3;
+}
+
 .holidayStyle{
     background-color: #706c61;
     color: #ffffff;
@@ -22,6 +27,23 @@
 .holidayResultsClass {
     font-weight: bold;
 }
+
+/* Bottom left text */
+.bottom-left {
+    position: relative;
+    bottom: 8px;
+    left: 16px;
+    color: white
+}
+.header{
+    font-weight: bold;
+    font-size: large;
+}
+.title{
+    color: #e1f4f3;
+}
+
+
 ol {
     list-style-type: decimal;
 }
@@ -52,5 +74,6 @@ ol {
     padding: .2rem .5rem;
     border-radius: 3px;
 }
+
 
 
