@@ -105,14 +105,6 @@
                 <div class="tile is-vertical">
                     <!-- Ben -->
 
-
-                    <!-- Bands In Town  -->
-                    <div class="tile is-parent is-vertical">
-
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">Bands In Town</p>
-                            <p class="subtitle">Top tile</p>
-                          
                     <!-- Dictionary  -->
                         <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification dictionaryStyle">
@@ -132,16 +124,24 @@
                     </div>
                     <!-- George - Air quality % Sports -->
                     <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification is-info">
-                            <p class="title">sports</p>
-                            <p class="subtitle">With an image</p>
-                            <figure class="image is-4by3">
-                                <img src="https://bulma.io/images/placeholders/640x480.png">
-                            </figure>
+                        <article class="tile is-child notification color-blue sports-tile">
+                            <p class="sports-title">NBA Game Scores</p>
+                            <div class="sports-scores-container" id="scoreContainer"></div>
                         </article>
-                        <article class="tile is-child notification is-warning">
-                            <p class="title">Air quality</p>
-                            <p class="subtitle" id="airQualityOutput"></p>
+                        <article class="tile is-child notification color-black aqi-tile">
+                            <p class="aqi-title">Air Quality Index</p>
+                            <p class="aqi-readout" > 
+                                <span id="airQualityOutput0"></span>
+                                <span class="aqi-readout-box" id="airQualityReadout0"></span>
+                            </p>
+                            <p class="aqi-readout" > 
+                                <span id="airQualityOutput1"></span>
+                                <span class="aqi-readout-box" id="airQualityReadout1"></span>
+                            </p>
+                            <p class="aqi-readout" > 
+                                <span id="airQualityOutput2"></span>
+                                <span class="aqi-readout-box" id="airQualityReadout2"></span>
+                            </p>
                         </article>
                     </div>
                 </div>

@@ -52,11 +52,68 @@ ol {
     color: #e1f4f3;
 }
 
+
 .rating {
     color: black
+
+.aqi-tile {
+    color: #ffffff;
 }
 
+.aqi-title{
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
 
+.aqi-readout{
+    margin-bottom: .2rem;
+    display: flex;
+    font-weight: 600;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
 
+.aqi-readout-box{
+    padding: .2rem .5rem;
+    border-radius: 3px;
+}
 
+.sports-tile{
+    color: #ffffff;
+}
 
+.sports-title{
+    color: #333333;
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.sports-scores-container{
+    padding: .2rem;
+    border-radius: 3px;
+    height: 150px;
+    /* background-color: red; */
+    overflow: scroll;
+    overflow-x: hidden;
+}
+/* .sports-scores-container::-webkit-scrollbar{
+    background: none;
+} */
+
+.score-background{
+    background-color: #333333;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+.score-background p{
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+div .column-spacer{
+    margin: -5px;
+}
