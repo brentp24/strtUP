@@ -111,8 +111,8 @@ html {
 #inlineBlock {
     display: inline-block;
 }
-.rating {
-    color: black
+.restaurantResults {
+    color: #333333;
 }
 
 .aqi-tile {
