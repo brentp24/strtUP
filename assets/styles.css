@@ -183,3 +183,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.subtitle {
+    color: #ffffff;
+    font-size: .75rem;
+}
