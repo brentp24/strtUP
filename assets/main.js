@@ -11,8 +11,8 @@ getSportsGames();
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
-    for(city in aqiCityArray){
-        let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city="+aqiCityArray[city]+"&date_from="+currentDate+"&order_by=date&parameter=pm25"
+    for (city in aqiCityArray) {
+        let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=" + aqiCityArray[city] + "&date_from=" + currentDate + "&order_by=date&parameter=pm25"
         $.ajax({
             url: airQualityUrl,
             method: "GET"
@@ -24,79 +24,79 @@ function displayAQ() {
             //creating AQI from average pm2.5 air data 
             average = averageArray.reduce((a, b) => a + b, 0);
             average = average / averageArray.length;
-            let airQualityIndex = average*4;
-            
+            let airQualityIndex = average * 4;
+
             //appending to printout array
-            airQualityIndexDisplay.push(airQualityIndex); 
+            airQualityIndexDisplay.push(airQualityIndex);
 
             //print information to widget
-            printAqReadout(airQualityIndex); 
+            printAqReadout(airQualityIndex);
 
         })
-        .catch(function (error) {
-            console.log(error);
-        })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 }
 
-function printAqReadout(airQualityIndex){
+function printAqReadout(airQualityIndex) {
     const aqiCityNameDisplay = ["Salt Lake City", "New York City", "Los Angles"]; //Creating separtate arrray with displayed names
-    for(city in aqiCityNameDisplay){
-        $("#airQualityOutput"+city+"").text(aqiCityNameDisplay[city]);
+    for (city in aqiCityNameDisplay) {
+        $("#airQualityOutput" + city + "").text(aqiCityNameDisplay[city]);
 
         // printing different options depending on the quality of the air
-        if(airQualityIndexDisplay[city] <= 50){
-            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Good");
-            $("#airQualityReadout"+city+"").css("background-color","green");
+        if (airQualityIndexDisplay[city] <= 50) {
+            $("#airQualityReadout" + city + "").text("" + (airQualityIndexDisplay[city]).toFixed(0) + " - Good");
+            $("#airQualityReadout" + city + "").css("background-color", "green");
         }
-        else if(airQualityIndexDisplay[city] > 50 && airQualityIndexDisplay[city] <= 90){
-            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Moderate");
-            $("#airQualityReadout"+city+"").css("background-color","Yellow");
+        else if (airQualityIndexDisplay[city] > 50 && airQualityIndexDisplay[city] <= 90) {
+            $("#airQualityReadout" + city + "").text("" + (airQualityIndexDisplay[city]).toFixed(0) + " - Moderate");
+            $("#airQualityReadout" + city + "").css("background-color", "Yellow");
         }
-        else if(airQualityIndexDisplay[city] > 90 && airQualityIndexDisplay[city] <= 150){
-            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Unhealthy");
-            $("#airQualityReadout"+city+"").css("background-color","Red");
+        else if (airQualityIndexDisplay[city] > 90 && airQualityIndexDisplay[city] <= 150) {
+            $("#airQualityReadout" + city + "").text("" + (airQualityIndexDisplay[city]).toFixed(0) + " - Unhealthy");
+            $("#airQualityReadout" + city + "").css("background-color", "Red");
         }
-        else{
-            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Deathly");
-            $("#airQualityReadout"+city+"").css("background-color","purple");
+        else {
+            $("#airQualityReadout" + city + "").text("" + (airQualityIndexDisplay[city]).toFixed(0) + " - Deathly");
+            $("#airQualityReadout" + city + "").css("background-color", "purple");
         }
     }
-    
+
 }
 let sportsScores = [];
-function getSportsGames(){
+function getSportsGames() {
     $.ajax({
         url: "https://www.balldontlie.io/api/v1/games",
         method: "GET"
-    }) .then(function(response){
-        for(game in response.data){
+    }).then(function (response) {
+        for (game in response.data) {
             sportsScores[game] = {
-                "homeTeam" : response.data[game].home_team.abbreviation,
-                "homeScore" : response.data[game].home_team_score,
-                "awayTeam" : response.data[game].visitor_team.abbreviation,
-                "awayScore" : response.data[game].visitor_team_score
+                "homeTeam": response.data[game].home_team.abbreviation,
+                "homeScore": response.data[game].home_team_score,
+                "awayTeam": response.data[game].visitor_team.abbreviation,
+                "awayScore": response.data[game].visitor_team_score
             }
         }
-        
+
         printSports();
-        
-    }) .catch(function (error) {
+
+    }).catch(function (error) {
         console.log(error);
     })
 
 }
 
-function printSports(){
+function printSports() {
     // console.log(Math.ceil(sportsScores.length/3));
     //for loop to create rows for the sports container then populate each row
-    for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
+    for (i = 0; i < Math.ceil(sportsScores.length / 3); i++) {
         let rowDivNode = $("<div>").addClass("columns column-spacer");
         //for loop to add three items into each row
-        for(j=0; j<3; j++){
+        for (j = 0; j < 3; j++) {
             let colDivNode = $("<div>").addClass("column score-background");
-            let gameTeams = $("<p>").text(""+sportsScores[(i*3)+j].homeTeam+" at "+sportsScores[(i*3)+j].awayTeam+"");
-            let gameScore = $("<p>").text(""+sportsScores[(i*3)+j].homeScore+" - "+sportsScores[(i*3)+j].awayScore+"");
+            let gameTeams = $("<p>").text("" + sportsScores[(i * 3) + j].homeTeam + " at " + sportsScores[(i * 3) + j].awayTeam + "");
+            let gameScore = $("<p>").text("" + sportsScores[(i * 3) + j].homeScore + " - " + sportsScores[(i * 3) + j].awayScore + "");
             colDivNode.append(gameTeams, gameScore);
             rowDivNode.append(colDivNode);
         }
@@ -352,114 +352,114 @@ $(document).ready(function () {
         });
     }
 
-//End Brent's JS
+    //End Brent's JS
 
-// NavBar hide and show listeners
-$(".linkUnsplash").on("click", function(){
-    var unSplashTile = $(".unSplashTile");
-    var unsplashIcon = $("#unsplashIcon");
-    if (unSplashTile.hasClass("hideTile")){
-         unSplashTile.removeClass("hideTile");
-         unsplashIcon.removeClass("icon-inactive");
-         unsplashIcon.addClass("icon-active");
-    } else {
-        unSplashTile.addClass("hideTile");
-        unsplashIcon.addClass("icon-inactive");
-        unsplashIcon.removeClass("icon-active");
-    }
-});
-$(".linkQuote").on("click", function(){
-    var quoteTile = $(".quoteTile");
-    var quoteIcon = $("#quoteIcon");
-    if (quoteTile.hasClass("hideTile")){
-         quoteTile.removeClass("hideTile");
-         quoteIcon.removeClass("icon-inactive");
-         quoteIcon.addClass("icon-active");
-    } else {
-        quoteTile.addClass("hideTile");
-        quoteIcon.addClass("icon-inactive");
-        quoteIcon.removeClass("icon-active");
-    }
-});
-$(".linkDictionary").on("click", function(){
-    var dictionaryTile = $(".dictionaryTile");
-    var dictionaryIcon = $("#dictionaryIcon");
-    if (dictionaryTile.hasClass("hideTile")){
-         dictionaryTile.removeClass("hideTile");
-         dictionaryIcon.removeClass("icon-inactive");
-         dictionaryIcon.addClass("icon-active");
-    } else {
-        dictionaryTile.addClass("hideTile");
-        dictionaryIcon.addClass("icon-inactive");
-        dictionaryIcon.removeClass("icon-active");
-    }
-});
-$(".linkHoliday").on("click", function(){
-    var holidayTile = $(".holidayTile");
-    var holidayIcon = $("#holidayIcon");
-    if (holidayTile.hasClass("hideTile")){
-        holidayTile.removeClass("hideTile");
-        holidayIcon.removeClass("icon-inactive");
-        holidayIcon.addClass("icon-active");
-   } else {
-       holidayTile.addClass("hideTile");
-       holidayIcon.addClass("icon-inactive");
-       holidayIcon.removeClass("icon-active");
-   }
-});
-$(".linkSports").on("click", function(){
-    var sportsTile = $(".sportsTile");
-    var sportsIcon = $("#sportsIcon");
-    if (sportsTile.hasClass("hideTile")){
-        sportsTile.removeClass("hideTile");
-        sportsIcon.removeClass("icon-inactive");
-        sportsIcon.addClass("icon-active");
-   } else {
-       sportsTile.addClass("hideTile");
-       sportsIcon.addClass("icon-inactive");
-       sportsIcon.removeClass("icon-active");
-   }
-});
-$(".linkAir").on("click", function(){
-    var airTile = $(".airTile");
-    var airIcon = $("#airIcon");
-    if (airTile.hasClass("hideTile")){
-         airTile.removeClass("hideTile");
-         airIcon.removeClass("icon-inactive");
-         airIcon.addClass("icon-active");
-    } else {
-        airTile.addClass("hideTile");
-        airIcon.addClass("icon-inactive");
-        airIcon.removeClass("icon-active");
-    }
-});
+    // NavBar hide and show listeners
+    $(".linkUnsplash").on("click", function () {
+        var unSplashTile = $(".unSplashTile");
+        var unsplashIcon = $("#unsplashIcon");
+        if (unSplashTile.hasClass("hideTile")) {
+            unSplashTile.removeClass("hideTile");
+            unsplashIcon.removeClass("icon-inactive");
+            unsplashIcon.addClass("icon-active");
+        } else {
+            unSplashTile.addClass("hideTile");
+            unsplashIcon.addClass("icon-inactive");
+            unsplashIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkQuote").on("click", function () {
+        var quoteTile = $(".quoteTile");
+        var quoteIcon = $("#quoteIcon");
+        if (quoteTile.hasClass("hideTile")) {
+            quoteTile.removeClass("hideTile");
+            quoteIcon.removeClass("icon-inactive");
+            quoteIcon.addClass("icon-active");
+        } else {
+            quoteTile.addClass("hideTile");
+            quoteIcon.addClass("icon-inactive");
+            quoteIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkDictionary").on("click", function () {
+        var dictionaryTile = $(".dictionaryTile");
+        var dictionaryIcon = $("#dictionaryIcon");
+        if (dictionaryTile.hasClass("hideTile")) {
+            dictionaryTile.removeClass("hideTile");
+            dictionaryIcon.removeClass("icon-inactive");
+            dictionaryIcon.addClass("icon-active");
+        } else {
+            dictionaryTile.addClass("hideTile");
+            dictionaryIcon.addClass("icon-inactive");
+            dictionaryIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkHoliday").on("click", function () {
+        var holidayTile = $(".holidayTile");
+        var holidayIcon = $("#holidayIcon");
+        if (holidayTile.hasClass("hideTile")) {
+            holidayTile.removeClass("hideTile");
+            holidayIcon.removeClass("icon-inactive");
+            holidayIcon.addClass("icon-active");
+        } else {
+            holidayTile.addClass("hideTile");
+            holidayIcon.addClass("icon-inactive");
+            holidayIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkSports").on("click", function () {
+        var sportsTile = $(".sportsTile");
+        var sportsIcon = $("#sportsIcon");
+        if (sportsTile.hasClass("hideTile")) {
+            sportsTile.removeClass("hideTile");
+            sportsIcon.removeClass("icon-inactive");
+            sportsIcon.addClass("icon-active");
+        } else {
+            sportsTile.addClass("hideTile");
+            sportsIcon.addClass("icon-inactive");
+            sportsIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkAir").on("click", function () {
+        var airTile = $(".airTile");
+        var airIcon = $("#airIcon");
+        if (airTile.hasClass("hideTile")) {
+            airTile.removeClass("hideTile");
+            airIcon.removeClass("icon-inactive");
+            airIcon.addClass("icon-active");
+        } else {
+            airTile.addClass("hideTile");
+            airIcon.addClass("icon-inactive");
+            airIcon.removeClass("icon-active");
+        }
+    });
 
-$(".linkZomato").on("click", function(){
-    var zomatoTile = $(".zomatoTile");
-    var zomatoIcon = $("#zomatoIcon");
-    if (zomatoTile.hasClass("hideTile")){
-         zomatoTile.removeClass("hideTile");
-         zomatoIcon.removeClass("icon-inactive");
-         zomatoIcon.addClass("icon-active");
-    } else {
-        zomatoTile.addClass("hideTile");
-        zomatoIcon.addClass("icon-inactive");
-        zomatoIcon.removeClass("icon-active");
-    }
-});
-$(".linkWeather").on("click", function(){
-    var weatherTile = $(".weatherTile");
-    var weatherIcon = $("#weatherIcon");
-    if (weatherTile.hasClass("hideTile")){
-         weatherTile.removeClass("hideTile");
-         weatherIcon.removeClass("icon-inactive");
-         weatherIcon.addClass("icon-active");
-    } else {
-        weatherTile.addClass("hideTile");
-        weatherIcon.addClass("icon-inactive");
-        weatherIcon.removeClass("icon-active");
-    }
-});
+    $(".linkZomato").on("click", function () {
+        var zomatoTile = $(".zomatoTile");
+        var zomatoIcon = $("#zomatoIcon");
+        if (zomatoTile.hasClass("hideTile")) {
+            zomatoTile.removeClass("hideTile");
+            zomatoIcon.removeClass("icon-inactive");
+            zomatoIcon.addClass("icon-active");
+        } else {
+            zomatoTile.addClass("hideTile");
+            zomatoIcon.addClass("icon-inactive");
+            zomatoIcon.removeClass("icon-active");
+        }
+    });
+    $(".linkWeather").on("click", function () {
+        var weatherTile = $(".weatherTile");
+        var weatherIcon = $("#weatherIcon");
+        if (weatherTile.hasClass("hideTile")) {
+            weatherTile.removeClass("hideTile");
+            weatherIcon.removeClass("icon-inactive");
+            weatherIcon.addClass("icon-active");
+        } else {
+            weatherTile.addClass("hideTile");
+            weatherIcon.addClass("icon-inactive");
+            weatherIcon.removeClass("icon-active");
+        }
+    });
 
 });
 

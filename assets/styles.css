@@ -33,8 +33,9 @@
     position: relative;
     bottom: 8px;
     left: 16px;
-    color: white
-}
+    color: white;
+    height: 100%;
+}   
 .header{
     font-weight: bold;
     font-size: large;
@@ -155,4 +156,11 @@ html {
 
 div .column-spacer{
     margin: -5px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
