@@ -73,16 +73,16 @@ html {
     -o-background-size: cover;
     background-size: cover;
   }
-  .tileWrapper{
-      display: none;
-
-  }
+.tileWrapper{
+    display: none;
+}
 #inlineBlock {
     display: inline-block;
 }
 .rating {
     color: black
 }
+
 .aqi-tile {
     color: #ffffff;
 }
