@@ -77,14 +77,17 @@ ol {
 
 
 .icon-active{
-    padding: .25rem;
-    color: white;
-    background-color: green;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    color: #333333;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .icon-inactive{
-    padding: .25rem;
-    color: red;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    color: white;
 }
 
 .navbar {
