@@ -33,8 +33,9 @@
     position: relative;
     bottom: 8px;
     left: 16px;
-    color: white
-}
+    color: white;
+    height: 100%;
+}   
 .header{
     font-weight: bold;
     font-size: large;
@@ -57,6 +58,18 @@ ol {
 .hideTile {
     display: none;
 }
+
+.icon-active{
+    padding: .25rem;
+    color: white;
+    background-color: green;
+}
+
+.icon-inactive{
+    padding: .25rem;
+    color: red;
+}
+
 .navbar {
     background-color: initial;
 }
@@ -72,7 +85,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
+}
 .tileWrapper{
     display: none;
 }
@@ -143,4 +156,11 @@ html {
 
 div .column-spacer{
     margin: -5px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
