@@ -14,9 +14,31 @@
     background-color: #e1f4f3;
 }
 
+
+/* start here */
 .text-blue{
     color: #e1f4f3;
 }
+
+.tile article{
+    transition: .5s ease-in-out;
+}
+
+.is-active {
+    /* display: block; */
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.hideTile {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    /* display: none; */
+}
+
+/* end here */
+
 
 .holidayStyle{
     background-color: #706c61;
@@ -52,12 +74,7 @@ ol {
     background-color: #333333;
     color: #e1f4f3;
 }
-.is-active {
-    display: block;
-}
-.hideTile {
-    display: none;
-}
+
 
 .icon-active{
     padding: .25rem;
