@@ -57,6 +57,18 @@ ol {
 .hideTile {
     display: none;
 }
+
+.icon-active{
+    padding: .25rem;
+    color: white;
+    background-color: green;
+}
+
+.icon-inactive{
+    padding: .25rem;
+    color: red;
+}
+
 .navbar {
     background-color: initial;
 }
@@ -72,7 +84,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
+}
 .tileWrapper{
     display: none;
 }

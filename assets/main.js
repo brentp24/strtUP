@@ -357,78 +357,109 @@ $(document).ready(function () {
 // NavBar hide and show listeners
 $(".linkUnsplash").on("click", function(){
     var unSplashTile = $(".unSplashTile");
+    var unsplashIcon = $("#unsplashIcon");
     if (unSplashTile.hasClass("hideTile")){
          unSplashTile.removeClass("hideTile");
+         unsplashIcon.removeClass("icon-inactive");
+         unsplashIcon.addClass("icon-active");
     } else {
         unSplashTile.addClass("hideTile");
+        unsplashIcon.addClass("icon-inactive");
+        unsplashIcon.removeClass("icon-active");
     }
 });
 $(".linkQuote").on("click", function(){
     var quoteTile = $(".quoteTile");
+    var quoteIcon = $("#quoteIcon");
     if (quoteTile.hasClass("hideTile")){
          quoteTile.removeClass("hideTile");
+         quoteIcon.removeClass("icon-inactive");
+         quoteIcon.addClass("icon-active");
     } else {
         quoteTile.addClass("hideTile");
+        quoteIcon.addClass("icon-inactive");
+        quoteIcon.removeClass("icon-active");
     }
 });
 $(".linkDictionary").on("click", function(){
     var dictionaryTile = $(".dictionaryTile");
+    var dictionaryIcon = $("#dictionaryIcon");
     if (dictionaryTile.hasClass("hideTile")){
          dictionaryTile.removeClass("hideTile");
+         dictionaryIcon.removeClass("icon-inactive");
+         dictionaryIcon.addClass("icon-active");
     } else {
         dictionaryTile.addClass("hideTile");
+        dictionaryIcon.addClass("icon-inactive");
+        dictionaryIcon.removeClass("icon-active");
     }
 });
 $(".linkHoliday").on("click", function(){
     var holidayTile = $(".holidayTile");
+    var holidayIcon = $("#holidayIcon");
     if (holidayTile.hasClass("hideTile")){
-         holidayTile.removeClass("hideTile");
-    } else {
-        holidayTile.addClass("hideTile");
-    }
+        holidayTile.removeClass("hideTile");
+        holidayIcon.removeClass("icon-inactive");
+        holidayIcon.addClass("icon-active");
+   } else {
+       holidayTile.addClass("hideTile");
+       holidayIcon.addClass("icon-inactive");
+       holidayIcon.removeClass("icon-active");
+   }
 });
 $(".linkSports").on("click", function(){
     var sportsTile = $(".sportsTile");
+    var sportsIcon = $("#sportsIcon");
     if (sportsTile.hasClass("hideTile")){
-         sportsTile.removeClass("hideTile");
-    } else {
-        sportsTile.addClass("hideTile");
-    }
+        sportsTile.removeClass("hideTile");
+        sportsIcon.removeClass("icon-inactive");
+        sportsIcon.addClass("icon-active");
+   } else {
+       sportsTile.addClass("hideTile");
+       sportsIcon.addClass("icon-inactive");
+       sportsIcon.removeClass("icon-active");
+   }
 });
 $(".linkAir").on("click", function(){
     var airTile = $(".airTile");
+    var airIcon = $("#airIcon");
     if (airTile.hasClass("hideTile")){
          airTile.removeClass("hideTile");
+         airIcon.removeClass("icon-inactive");
+         airIcon.addClass("icon-active");
     } else {
         airTile.addClass("hideTile");
+        airIcon.addClass("icon-inactive");
+        airIcon.removeClass("icon-active");
     }
 });
-$(".linkStrava").on("click", function(){
-    var stravaTile = $(".stravaTile");
-    if (stravaTile.hasClass("hideTile")){
-         stravaTile.removeClass("hideTile");
-    } else {
-        stravaTile.addClass("hideTile");
-    }
-});
+
 $(".linkZomato").on("click", function(){
     var zomatoTile = $(".zomatoTile");
+    var zomatoIcon = $("#zomatoIcon");
     if (zomatoTile.hasClass("hideTile")){
          zomatoTile.removeClass("hideTile");
+         zomatoIcon.removeClass("icon-inactive");
+         zomatoIcon.addClass("icon-active");
     } else {
         zomatoTile.addClass("hideTile");
+        zomatoIcon.addClass("icon-inactive");
+        zomatoIcon.removeClass("icon-active");
     }
 });
 $(".linkWeather").on("click", function(){
     var weatherTile = $(".weatherTile");
+    var weatherIcon = $("#weatherIcon");
     if (weatherTile.hasClass("hideTile")){
          weatherTile.removeClass("hideTile");
+         weatherIcon.removeClass("icon-inactive");
+         weatherIcon.addClass("icon-active");
     } else {
         weatherTile.addClass("hideTile");
+        weatherIcon.addClass("icon-inactive");
+        weatherIcon.removeClass("icon-active");
     }
 });
-
- 
 
 });
 
