@@ -51,7 +51,34 @@ ol {
     background-color: #333333;
     color: #e1f4f3;
 }
-
+.is-active {
+    display: block;
+}
+.hideTile {
+    display: none;
+}
+.navbar {
+    background-color: initial;
+}
+.navbar-item {
+    background-color: initial;
+}
+.navbar-link{
+    background-color: white;
+}
+html { 
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+.tileWrapper{
+    display: none;
+}
+#inlineBlock {
+    display: inline-block;
+}
 .rating {
     color: black
 }

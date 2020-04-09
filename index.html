@@ -5,17 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>strtUP</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
 <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item linkUnsplash">
+                <i class="far fa-image"></i></a>
+            <a class="navbar-item linkQuote">
+                <i class="fas fa-quote-right"></i></a>
+            <a class="navbar-item linkDictionary">
+                <i class="fas fa-book"></i></a>
+            <a class="navbar-item linkHoliday">
+                <i class="fas fa-birthday-cake"></i></a>
+            <a class="navbar-item linkSports">
+                <i class="fas fa-basketball-ball"></i></a>
+            <a class="navbar-item linkAir">
+                <i class="fas fa-lungs"></i></a>
+            <a class="navbar-item linkZomato">
+                <i class="fas fa-utensils"></i></a>
+            <a class="navbar-item linkWeather">
+                <i class="fas fa-cloud-sun"></i></a>
+        </div>
+    </nav>
+
+
+
     <div class="tile is-ancestor">
         <div class="tile is-vertical ">
             <div class="tile">
                 <!-- Jordan -->
                 <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification is-primary">
+                    <article class="tile is-child notification is-primary unSplashTile">
                         <p class="title">Background</p>
                         <p class="subtitle">Use a keyword to search Unslash for a new background image.</p>
                         <div class="field">
@@ -27,27 +51,27 @@
                             <button id="backgroundBtn" class="button is-link is-light">Submit</button>
                         </div>
                     </article>
-                    <article class="tile is-child notification is-warning">
+                    <article class="tile is-child notification is-warning quoteTile">
                         <p class="title">Quote of the day</p>
                         <p id="quote"></p>
                         <p id="quoteAuthor"></p>
                         <br>
                         <button id="newQuoteBtn" class="button is-black">New Quote</button>
                     </article>
-                    <article class="tile is-child notification color-black">
+                    <article class="tile is-child notification color-black weatherTile">
                         <p id="cityName" class="title has-text-white">Weather</p>
-                            <label class="label has-text-white">Search by City Name:</label>
-                            <div class="field-body">
+                        <label class="label has-text-white">Search by City Name:</label>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input id="cityInput" class="input" type="text" placeholder="Name of City">
+                                </div>
+                                <br>
                                 <div class="field">
-                                    <div class="control">
-                                        <input id="cityInput" class="input" type="text" placeholder="Name of City">
-                                    </div>
-                                    <br>
-                                    <div class="field">
-                                        <button id="cityBtn" class="button is-link is-light">Search</button>
-                                    </div>
+                                    <button id="cityBtn" class="button is-link is-light">Search</button>
                                 </div>
                             </div>
+                        </div>
                         <div id="currentWeather" class="column has-text-white">
                             <div class="header" id="nameDateIcon"></div>
                             <br>
@@ -106,8 +130,8 @@
                     <!-- Ben -->
 
                     <!-- Dictionary  -->
-                        <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification dictionaryStyle">
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification dictionaryStyle dictionaryTile">
                             <p class="title">Dictionary</p>
                             <input class="searchedWord input is-small">
                             <button class="button dictionarySearch">Search</button>
@@ -116,7 +140,7 @@
 
                         </article>
                         <!-- Holidays Api  -->
-                        <article class="tile is-child is-vertical holidayStyle">
+                        <article class="tile is-child is-vertical holidayStyle holidayTile">
                             <p class="title holidayStyle">Upcoming Holiday</p>
                             <div class="holidayResultsClass"> </div>
                             <p class="holidayDate"></p>
@@ -124,21 +148,21 @@
                     </div>
                     <!-- George - Air quality % Sports -->
                     <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification color-blue sports-tile">
+                        <article class="tile is-child notification color-blue sports-tile sportsTile">
                             <p class="sports-title">NBA Game Scores</p>
                             <div class="sports-scores-container" id="scoreContainer"></div>
                         </article>
-                        <article class="tile is-child notification color-black aqi-tile">
+                        <article class="tile is-child notification color-black aqi-tile airTile">
                             <p class="aqi-title">Air Quality Index</p>
-                            <p class="aqi-readout" > 
+                            <p class="aqi-readout">
                                 <span id="airQualityOutput0"></span>
                                 <span class="aqi-readout-box" id="airQualityReadout0"></span>
                             </p>
-                            <p class="aqi-readout" > 
+                            <p class="aqi-readout">
                                 <span id="airQualityOutput1"></span>
                                 <span class="aqi-readout-box" id="airQualityReadout1"></span>
                             </p>
-                            <p class="aqi-readout" > 
+                            <p class="aqi-readout">
                                 <span id="airQualityOutput2"></span>
                                 <span class="aqi-readout-box" id="airQualityReadout2"></span>
                             </p>
@@ -152,21 +176,22 @@
 
                     <!-- Brent - Zomato -->
                     <div class="tile">
-                        <article class="tile is-child notification is-info">
+                        <article class="tile is-child notification is-info zomatoTile">
                             <p class="title">Restaurant Search</p>
-                
+
                             <label class="label has-text-white">Search by City Name:</label>
                             <div class="field-body">
                                 <div class="field">
-                                                        <!-- Search Fields -->
+                                    <!-- Search Fields -->
                                     <div class="control">
                                         <input id="cityInput" class="input" type="text" placeholder="Name of City">
                                     </div>
                                     <br>
-                
+
                                     <label class="label has-text-white">Search Restaurant Details:</label>
                                     <div class="control">
-                                        <input id="restaurantInput" class="input" type="text" placeholder="Restaurant Details">
+                                        <input id="restaurantInput" class="input" type="text"
+                                            placeholder="Restaurant Details">
                                     </div>
                                     <br>
                                     <div class="field">
@@ -174,7 +199,7 @@
                                     </div>
                                 </div>
                             </div>
-                <br>
+                            <br>
                             <!-- container for results -->
                             <div class="container">
                                 <div>

@@ -262,21 +262,6 @@ function displayCityInfo() {
     })
 }
 // Ben's Java
-// Bands In Town
-
-var BandsInTownID = ""
-var artistID = ""
-var BandsInTownUrl = ""
-
-
-
-
-
-
-
-
-
-
 //Dictionary function listener
 $(".dictionarySearch").on("click", function () {
     dictionarySearch();
@@ -300,7 +285,6 @@ function dictionarySearch() {
         }
     })
 };
-
 // Holiday Api
 var currentDay = moment().format("DD");
 var currentMonth = moment().format("MM");
@@ -316,8 +300,6 @@ $.ajax({
     var thisYearDate = moment(nextHoliday.date).add(1, 'year').format("MMMM Do YYYY")
     $(".holidayDate").text(thisYearDate)
 })
-
-
 // The end of Ben.. 's Java
 
 
@@ -369,6 +351,84 @@ $(document).ready(function () {
             $(".message").html(html);
         });
     }
+
+//End Brent's JS
+
+// NavBar hide and show listeners
+$(".linkUnsplash").on("click", function(){
+    var unSplashTile = $(".unSplashTile");
+    if (unSplashTile.hasClass("hideTile")){
+         unSplashTile.removeClass("hideTile");
+    } else {
+        unSplashTile.addClass("hideTile");
+    }
+});
+$(".linkQuote").on("click", function(){
+    var quoteTile = $(".quoteTile");
+    if (quoteTile.hasClass("hideTile")){
+         quoteTile.removeClass("hideTile");
+    } else {
+        quoteTile.addClass("hideTile");
+    }
+});
+$(".linkDictionary").on("click", function(){
+    var dictionaryTile = $(".dictionaryTile");
+    if (dictionaryTile.hasClass("hideTile")){
+         dictionaryTile.removeClass("hideTile");
+    } else {
+        dictionaryTile.addClass("hideTile");
+    }
+});
+$(".linkHoliday").on("click", function(){
+    var holidayTile = $(".holidayTile");
+    if (holidayTile.hasClass("hideTile")){
+         holidayTile.removeClass("hideTile");
+    } else {
+        holidayTile.addClass("hideTile");
+    }
+});
+$(".linkSports").on("click", function(){
+    var sportsTile = $(".sportsTile");
+    if (sportsTile.hasClass("hideTile")){
+         sportsTile.removeClass("hideTile");
+    } else {
+        sportsTile.addClass("hideTile");
+    }
+});
+$(".linkAir").on("click", function(){
+    var airTile = $(".airTile");
+    if (airTile.hasClass("hideTile")){
+         airTile.removeClass("hideTile");
+    } else {
+        airTile.addClass("hideTile");
+    }
+});
+$(".linkStrava").on("click", function(){
+    var stravaTile = $(".stravaTile");
+    if (stravaTile.hasClass("hideTile")){
+         stravaTile.removeClass("hideTile");
+    } else {
+        stravaTile.addClass("hideTile");
+    }
+});
+$(".linkZomato").on("click", function(){
+    var zomatoTile = $(".zomatoTile");
+    if (zomatoTile.hasClass("hideTile")){
+         zomatoTile.removeClass("hideTile");
+    } else {
+        zomatoTile.addClass("hideTile");
+    }
+});
+$(".linkWeather").on("click", function(){
+    var weatherTile = $(".weatherTile");
+    if (weatherTile.hasClass("hideTile")){
+         weatherTile.removeClass("hideTile");
+    } else {
+        weatherTile.addClass("hideTile");
+    }
+});
+
+ 
 
 });
 
