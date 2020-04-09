@@ -43,7 +43,7 @@ function setBackground() {
         method: "GET"
     }).then(function (response) {
         var imageUrl = response.urls["full"];
-        $("#backgroundPhotographer").html("Photo by <a href="+response.links.html+">"+response.user.name+"</a>"+ " on <a href="+unsplashWebsite+">Unsplash</a>");
+        $("#backgroundPhotographer").html("Photo by <a href=" + response.links.html + ">" + response.user.name + "</a>" + " on <a href=" + unsplashWebsite + ">Unsplash</a>");
         //console.log(response);
         $("body")
             .css("background-image", "url(" + imageUrl + ")")
@@ -175,7 +175,7 @@ function displayCityInfo() {
 
 var BandsInTownID = ""
 var artistID = ""
-var BandsInTownUrl= ""
+var BandsInTownUrl = ""
 
 
 
@@ -230,9 +230,56 @@ $.ajax({
 // The end of Ben.. 's Java
 
 
-
-
 //Brent's JS
+$(document).ready(function () {
+    $("#restaurantSearch").on("click", function () {
+        select();
+        event.preventDefault();
+    });
+
+
+    //search city  (help from https://codepen.io/pbairishal/pen/JMOdKz)
+    function select() {
+        var restaurantBox = $('#restaurantInput').val()
+        var cityBox = $('#cityInput').val()
+        var searchCity = "&q=" + restaurantBox;
+        //set settings
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityBox + "&entity_type=city" + searchCity + "&count=3",
+            "method": "GET",
+            "headers": {
+                "user-key": "5f04213dc414e4e76eca147169ee407a",
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        //shorthand for ajax
+        $.getJSON(settings, function (data) {
+            data = data.restaurants;
+            var html = "";
+
+            $.each(data, function (index, value) {
+
+                var x = data[index];
+                console.log(typeof x);
+                $.each(x, function (index, value) {
+                    var location = x.restaurant.location;
+                    var userRating = x.restaurant.user_rating;
+                    html += "<h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
+                    html += "<div class='rating'>"
+                    html += "<span title='" + userRating.rating_text + "'><p><strong> User Rating: " + userRating.aggregate_rating + "</strong></p></span>";
+                    html += "  <strong class='text-primary'>" + location.locality + "</strong>";
+                    html += "  <h6><strong>" + location.address + "</strong></h6>";
+                    html += "  <strong>CUISINES</strong>: " + value.cuisines + "";
+                    html += "</div><br>";
+                });
+            });
+            $(".message").html(html);
+        });
+    }
+
+});
 
 
 
