@@ -3,32 +3,123 @@
 
 
 // George
-let test;
-let averageArray = [];
-function displayAQ() {
-    let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city=Salt%20Lake%20City&date_from=2020-04-04&order_by=date&parameter=pm25"
-    $.ajax({
-        url: airQualityUrl,
-        method: "GET"
-    }).then(function (response) {
-        //console.log(response);
-
-        for (result in response.results) {
-            averageArray[result] = response.results[result].value;
-        }
-        average = averageArray.reduce((a, b) => a + b, 0);
-        average = average / averageArray.length;
-        $("#airQualityOutput").text(average.toFixed(2));
-
-    }).catch(function (error) {
-        console.log(error);
-    })
-}
+const currentDate = moment().format("YYYY-MM-DD");
+let airQualityIndexDisplay = [];
 
 displayAQ();
+getSportsGames();
 
+function displayAQ() {
+    let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
+    for(city in aqiCityArray){
+        let airQualityUrl = "https://api.openaq.org/v1/measurements?country=US&city="+aqiCityArray[city]+"&date_from="+currentDate+"&order_by=date&parameter=pm25"
+        $.ajax({
+            url: airQualityUrl,
+            method: "GET"
+        }).then(function (response) {
+            let averageArray = [];
+            for (result in response.results) {
+                averageArray[result] = response.results[result].value;
+            }
+            //creating AQI from average pm2.5 air data 
+            average = averageArray.reduce((a, b) => a + b, 0);
+            average = average / averageArray.length;
+            let airQualityIndex = average*4;
+            
+            //appending to printout array
+            airQualityIndexDisplay.push(airQualityIndex); 
+
+            //print information to widget
+            printAqReadout(airQualityIndex); 
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
+}
+
+function printAqReadout(airQualityIndex){
+    const aqiCityNameDisplay = ["Salt Lake City", "New York City", "Los Angles"]; //Creating separtate arrray with displayed names
+    for(city in aqiCityNameDisplay){
+        $("#airQualityOutput"+city+"").text(aqiCityNameDisplay[city]);
+
+        // printing different options depending on the quality of the air
+        if(airQualityIndexDisplay[city] <= 50){
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Good");
+            $("#airQualityReadout"+city+"").css("background-color","green");
+        }
+        else if(airQualityIndexDisplay[city] > 50 && airQualityIndexDisplay[city] <= 90){
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Moderate");
+            $("#airQualityReadout"+city+"").css("background-color","Yellow");
+        }
+        else if(airQualityIndexDisplay[city] > 90 && airQualityIndexDisplay[city] <= 150){
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Unhealthy");
+            $("#airQualityReadout"+city+"").css("background-color","Red");
+        }
+        else{
+            $("#airQualityReadout"+city+"").text(""+(airQualityIndexDisplay[city]).toFixed(0)+" - Deathly");
+            $("#airQualityReadout"+city+"").css("background-color","purple");
+        }
+    }
+    
+}
+let sportsScores = [];
+function getSportsGames(){
+    $.ajax({
+        url: "https://www.balldontlie.io/api/v1/games",
+        method: "GET"
+    }) .then(function(response){
+        for(game in response.data){
+            sportsScores[game] = {
+                "homeTeam" : response.data[game].home_team.abbreviation,
+                "homeScore" : response.data[game].home_team_score,
+                "awayTeam" : response.data[game].visitor_team.abbreviation,
+                "awayScore" : response.data[game].visitor_team_score
+            }
+        }
+        
+        printSports();
+        
+    }) .catch(function (error) {
+        console.log(error);
+    })
+
+}
+
+function printSports(){
+    // console.log(Math.ceil(sportsScores.length/3));
+    //for loop to create rows for the sports container then populate each row
+    for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
+        let rowDivNode = $("<div>").addClass("columns column-spacer");
+        //for loop to add three items into each row
+        for(j=0; j<3; j++){
+            let colDivNode = $("<div>").addClass("column score-background");
+            let gameTeams = $("<p>").text(""+sportsScores[(i*3)+j].homeTeam+" at "+sportsScores[(i*3)+j].awayTeam+"");
+            let gameScore = $("<p>").text(""+sportsScores[(i*3)+j].homeScore+" - "+sportsScores[(i*3)+j].awayScore+"");
+            colDivNode.append(gameTeams, gameScore);
+            rowDivNode.append(colDivNode);
+        }
+        $("#scoreContainer").append(rowDivNode);
+    }
+}
 // end George
-
+// function printSports(){
+//     // console.log(Math.ceil(sportsScores.length/3));
+//     //for loop to create rows for the sports container then populate each row
+//     for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
+//         let rowDivNode = $("<div>").addClass("columns column-spacer");
+//         //for loop to add three items into each row
+//         for(j=0; j<3; j++){
+//             let colDivNode = $("<div>").addClass("column score-background");
+//             // let gameTeams = $("<p>").text(""+sportsScores[0].homeTeam+" at "+sportsScores[0].awayTeam+"")
+//             // let gameScore = $("<p>").text(""+portsScores[0].homeScore+" - "+sportsScores[0].awayScore+"")
+//             colDivNode.text("gameTeams");
+//             // rowDivNode.append(colDivNode);
+//         }
+//         $("#scoreContainer").append(rowDivNode);
+//     }
+// }
 
 // Jordan
 
@@ -237,11 +328,4 @@ $.ajax({
 
 
 //End Brent's JS
-
-
-
-
-
-
-
 
