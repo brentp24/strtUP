@@ -162,11 +162,34 @@
                     <!-- Brent - Zomato -->
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Zomato</p>
-                            <p class="subtitle">With an image</p>
-                            <figure class="image is-4by3">
-                                <img src="https://bulma.io/images/placeholders/640x480.png">
-                            </figure>
+                            <p class="title">Restaurant Search</p>
+                
+                            <label class="label has-text-white">Search by City Name:</label>
+                            <div class="field-body">
+                                <div class="field">
+                                                        <!-- Search Fields -->
+                                    <div class="control">
+                                        <input id="cityInput" class="input" type="text" placeholder="Name of City">
+                                    </div>
+                                    <br>
+                
+                                    <label class="label has-text-white">Search Restaurant Details:</label>
+                                    <div class="control">
+                                        <input id="restaurantInput" class="input" type="text" placeholder="Restaurant Details">
+                                    </div>
+                                    <br>
+                                    <div class="field">
+                                        <button id="restaurantSearch" class="button is-link is-light">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                <br>
+                            <!-- container for results -->
+                            <div class="container">
+                                <div>
+                                    <div class="message"></div>
+                                </div>
+                            </div>
                         </article>
                     </div>
                 </div>
