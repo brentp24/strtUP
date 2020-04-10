@@ -405,16 +405,16 @@ $(document).ready(function () {
 function toggleBox(boxSelection,iconSelection){
     if(boxSelection.data("active") == "active"){
         boxSelection.toggleClass("box-hide");
-        boxSelection.attr("data-active" , "inactive");
+        boxSelection.data("active" , "inactive");
         iconSelection.removeClass("icon-inactive");
         iconSelection.addClass("icon-active");
         displayShow(boxSelection);
     } else{
         boxSelection.toggleClass("box-hide");
-        boxSelection.attr("data-active" , "active");
+        boxSelection.data("active" , "active");
         iconSelection.addClass("icon-inactive");
         iconSelection.removeClass("icon-active");
-        setTimeout(() => displayHide(boxSelection), 400);
+        setTimeout(() => displayHide(boxSelection), 350);
     }
     
 }
