@@ -1,5 +1,7 @@
 .color-black{
     background-color: #333333;
+    color: #ffffff;
+    border: none
 }
 
 .color-gray{
@@ -14,16 +16,34 @@
     background-color: #e1f4f3;
 }
 
-.text-blue{
-    color: #e1f4f3;
+.blueStyle{
+    background-color: #e1f4f3;
+    color: #333333;
+    padding: 15px;
+}
+
+.blackStyle{
+    background-color: #333333;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.greyStyle{
+    background-color: #706c61;
+    color: #ffffff;
+    padding: 15px;
 }
 
 .holidayStyle{
     background-color: #706c61;
     color: #ffffff;
     padding: 15px;
-    text-align: center;
 }
+
+.text-blue{
+    color: #e1f4f3;
+}
+
 .holidayResultsClass {
     font-weight: bold;
 }
@@ -40,9 +60,7 @@
     font-weight: bold;
     font-size: large;
 }
-.title{
-    color: #e1f4f3;
-}
+
 
 
 ol {
@@ -61,13 +79,14 @@ ol {
 
 .icon-active{
     padding: .25rem;
-    color: white;
-    background-color: green;
+    color: #e1f4f3;
+    background-color: #706c61;
 }
 
 .icon-inactive{
     padding: .25rem;
-    color: red;
+    color: #706c61;
+    background-color: #e1f4f3;
 }
 
 .navbar {
