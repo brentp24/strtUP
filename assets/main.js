@@ -306,21 +306,38 @@ $.ajax({
 //Brent's JS
 $(document).ready(function () {
     $("#restaurantSearch").on("click", function () {
-        select();
+        getLocation();
         event.preventDefault();
     });
 
+    function getLocation() {
+        // Make sure browser supports this feature
+        if (navigator.geolocation) {
+          // Provide our showPosition() function to getCurrentPosition
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } 
+        else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+      // This will get called after getCurrentPosition()
+      function showPosition(position) {
+        // Grab coordinates from the given object
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        select(lat, lon); 
+      }
 
     //search city  (help from https://codepen.io/pbairishal/pen/JMOdKz)
-    function select() {
-        var restaurantBox = $('#restaurantInput').val()
-        var cityBox = $('#cityInput').val()
+    function select(lat, lon) {
+        var restaurantBox = $('#restaurant-input').val()
+        var restaurantCount = $('#restaurant-count').val()
         var searchCity = "&q=" + restaurantBox;
         //set settings
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityBox + "&entity_type=city" + searchCity + "&count=3",
+            "url": "https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + lon + searchCity + "&count=" + restaurantCount,
             "method": "GET",
             "headers": {
                 "user-key": "5f04213dc414e4e76eca147169ee407a",
@@ -333,24 +350,26 @@ $(document).ready(function () {
             var html = "";
 
             $.each(data, function (index, value) {
-
-                var x = data[index];
-                console.log(typeof x);
+                var x = data[index]; // x is number of results
                 $.each(x, function (index, value) {
                     var location = x.restaurant.location;
                     var userRating = x.restaurant.user_rating;
-                    html += "<h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
-                    html += "<div class='rating'>"
-                    html += "<span title='" + userRating.rating_text + "'><p><strong> User Rating: " + userRating.aggregate_rating + "</strong></p></span>";
-                    html += "  <strong class='text-primary'>" + location.locality + "</strong>";
-                    html += "  <h6><strong>" + location.address + "</strong></h6>";
-                    html += "  <strong>CUISINES</strong>: " + value.cuisines + "";
+                    html += "<div class='restaurantResults'>"
+                    html += "<strong>" + value.name + "</strong></a>" + "   ---   CUISINES: " + value.cuisines + "";
+                    html += "<span title='" + userRating.rating_text + "'><p> User Rating: <strong>" + userRating.aggregate_rating + "</strong></p></span>";
+                    html += "Area:  <strong>" + location.locality + "</strong><br>";
+                    html += "Address: <strong>" + location.address + "</strong>";
+                    // html += "  <strong>CUISINES</strong>: " + value.cuisines + "";
                     html += "</div><br>";
                 });
             });
             $(".message").html(html);
         });
     }
+
+
+
+
 
     //End Brent's JS
 
