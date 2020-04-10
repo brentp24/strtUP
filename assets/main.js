@@ -103,23 +103,9 @@ function printSports() {
         $("#scoreContainer").append(rowDivNode);
     }
 }
+
+
 // end George
-// function printSports(){
-//     // console.log(Math.ceil(sportsScores.length/3));
-//     //for loop to create rows for the sports container then populate each row
-//     for(i=0; i<Math.ceil(sportsScores.length/3); i++){ 
-//         let rowDivNode = $("<div>").addClass("columns column-spacer");
-//         //for loop to add three items into each row
-//         for(j=0; j<3; j++){
-//             let colDivNode = $("<div>").addClass("column score-background");
-//             // let gameTeams = $("<p>").text(""+sportsScores[0].homeTeam+" at "+sportsScores[0].awayTeam+"")
-//             // let gameScore = $("<p>").text(""+portsScores[0].homeScore+" - "+sportsScores[0].awayScore+"")
-//             colDivNode.text("gameTeams");
-//             // rowDivNode.append(colDivNode);
-//         }
-//         $("#scoreContainer").append(rowDivNode);
-//     }
-// }
 
 // Jordan
 
@@ -306,21 +292,38 @@ $.ajax({
 //Brent's JS
 $(document).ready(function () {
     $("#restaurantSearch").on("click", function () {
-        select();
+        getLocation();
         event.preventDefault();
     });
 
+    function getLocation() {
+        // Make sure browser supports this feature
+        if (navigator.geolocation) {
+          // Provide our showPosition() function to getCurrentPosition
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } 
+        else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+      // This will get called after getCurrentPosition()
+      function showPosition(position) {
+        // Grab coordinates from the given object
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        select(lat, lon); 
+      }
 
     //search city  (help from https://codepen.io/pbairishal/pen/JMOdKz)
-    function select() {
-        var restaurantBox = $('#restaurantInput').val()
-        var cityBox = $('#cityInput').val()
+    function select(lat, lon) {
+        var restaurantBox = $('#restaurant-input').val()
+        var restaurantCount = $('#restaurant-count').val()
         var searchCity = "&q=" + restaurantBox;
         //set settings
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityBox + "&entity_type=city" + searchCity + "&count=3",
+            "url": "https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + lon + searchCity + "&count=" + restaurantCount,
             "method": "GET",
             "headers": {
                 "user-key": "5f04213dc414e4e76eca147169ee407a",
@@ -333,18 +336,16 @@ $(document).ready(function () {
             var html = "";
 
             $.each(data, function (index, value) {
-
-                var x = data[index];
-                console.log(typeof x);
+                var x = data[index]; // x is number of results
                 $.each(x, function (index, value) {
                     var location = x.restaurant.location;
                     var userRating = x.restaurant.user_rating;
-                    html += "<h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
-                    html += "<div class='rating'>"
-                    html += "<span title='" + userRating.rating_text + "'><p><strong> User Rating: " + userRating.aggregate_rating + "</strong></p></span>";
-                    html += "  <strong class='text-primary'>" + location.locality + "</strong>";
-                    html += "  <h6><strong>" + location.address + "</strong></h6>";
-                    html += "  <strong>CUISINES</strong>: " + value.cuisines + "";
+                    html += "<div class='restaurantResults'>"
+                    html += "<strong>" + value.name + "</strong></a>" + "   ---   CUISINES: " + value.cuisines + "";
+                    html += "<span title='" + userRating.rating_text + "'><p> User Rating: <strong>" + userRating.aggregate_rating + "</strong></p></span>";
+                    html += "Area:  <strong>" + location.locality + "</strong><br>";
+                    html += "Address: <strong>" + location.address + "</strong>";
+                    // html += "  <strong>CUISINES</strong>: " + value.cuisines + "";
                     html += "</div><br>";
                 });
             });
@@ -352,113 +353,123 @@ $(document).ready(function () {
         });
     }
 
+
+
+
+
     //End Brent's JS
+
+//tile animations
+// const splashBox = $(".unSplashTile");
+// const quoteBox = $(".quoteTile");
+// const weatherBox = $(".weatherTile");
+// const dictionaryBox = $(".dictionaryTile");
+// const holidayBox = $(".holidayTile");
+// const zomatoBox = $(".zomatoTile");
+// const sportsBox = $(".sportsTile");
+// const airBox = $(".airTile");
+
+
+// $("#unsplashIcon").click(function(){
+//     toggleBox(splashBox);
+// });
+
+// $("#quoteIcon").click(function(){
+//     toggleBox(quoteBox);
+// });
+
+// $("#dictionaryIcon").click(function(){
+//     toggleBox(dictionaryBox);
+// });
+
+// $("#holidayIcon").click(function(){
+//     toggleBox(holidayBox);
+// });
+
+// $("#sportsIcon").click(function(){
+//     toggleBox(sportsBox);
+// });
+
+// $("#airIcon").click(function(){
+//     toggleBox(airBox);
+// });
+
+// $("#zomatoIcon").click(function(){
+//     toggleBox(zomatoBox);
+// });
+
+// $("#weatherIcon").click(function(){
+//     toggleBox(weatherBox);
+// });
+
+function toggleBox(boxSelection,iconSelection){
+    if(boxSelection.data("active") == "active"){
+        boxSelection.toggleClass("box-hide");
+        boxSelection.attr("data-active" , "inactive");
+        iconSelection.removeClass("icon-inactive");
+        iconSelection.addClass("icon-active");
+        displayShow(boxSelection);
+    } else{
+        boxSelection.toggleClass("box-hide");
+        boxSelection.attr("data-active" , "active");
+        iconSelection.addClass("icon-inactive");
+        iconSelection.removeClass("icon-active");
+        setTimeout(() => displayHide(boxSelection), 400);
+    }
+    
+}
+
+function displayHide(boxSelection){
+    boxSelection.addClass("display-hide");
+    boxSelection.removeClass("display-show");
+}
+
+function displayShow(boxSelection){
+    boxSelection.removeClass("display-hide");
+    boxSelection.addClass("display-show");
+}
 
     // NavBar hide and show listeners
     $(".linkUnsplash").on("click", function () {
         var unSplashTile = $(".unSplashTile");
         var unsplashIcon = $("#unsplashIcon");
-        if (unSplashTile.hasClass("hideTile")) {
-            unSplashTile.removeClass("hideTile");
-            unsplashIcon.removeClass("icon-inactive");
-            unsplashIcon.addClass("icon-active");
-        } else {
-            unSplashTile.addClass("hideTile");
-            unsplashIcon.addClass("icon-inactive");
-            unsplashIcon.removeClass("icon-active");
-        }
+        toggleBox(unSplashTile,unsplashIcon);    
     });
     $(".linkQuote").on("click", function () {
         var quoteTile = $(".quoteTile");
         var quoteIcon = $("#quoteIcon");
-        if (quoteTile.hasClass("hideTile")) {
-            quoteTile.removeClass("hideTile");
-            quoteIcon.removeClass("icon-inactive");
-            quoteIcon.addClass("icon-active");
-        } else {
-            quoteTile.addClass("hideTile");
-            quoteIcon.addClass("icon-inactive");
-            quoteIcon.removeClass("icon-active");
-        }
+        toggleBox(quoteTile,quoteIcon);
     });
     $(".linkDictionary").on("click", function () {
         var dictionaryTile = $(".dictionaryTile");
         var dictionaryIcon = $("#dictionaryIcon");
-        if (dictionaryTile.hasClass("hideTile")) {
-            dictionaryTile.removeClass("hideTile");
-            dictionaryIcon.removeClass("icon-inactive");
-            dictionaryIcon.addClass("icon-active");
-        } else {
-            dictionaryTile.addClass("hideTile");
-            dictionaryIcon.addClass("icon-inactive");
-            dictionaryIcon.removeClass("icon-active");
-        }
+        toggleBox(dictionaryTile,dictionaryIcon);
     });
     $(".linkHoliday").on("click", function () {
         var holidayTile = $(".holidayTile");
         var holidayIcon = $("#holidayIcon");
-        if (holidayTile.hasClass("hideTile")) {
-            holidayTile.removeClass("hideTile");
-            holidayIcon.removeClass("icon-inactive");
-            holidayIcon.addClass("icon-active");
-        } else {
-            holidayTile.addClass("hideTile");
-            holidayIcon.addClass("icon-inactive");
-            holidayIcon.removeClass("icon-active");
-        }
+        toggleBox(holidayTile,holidayIcon);
     });
     $(".linkSports").on("click", function () {
         var sportsTile = $(".sportsTile");
         var sportsIcon = $("#sportsIcon");
-        if (sportsTile.hasClass("hideTile")) {
-            sportsTile.removeClass("hideTile");
-            sportsIcon.removeClass("icon-inactive");
-            sportsIcon.addClass("icon-active");
-        } else {
-            sportsTile.addClass("hideTile");
-            sportsIcon.addClass("icon-inactive");
-            sportsIcon.removeClass("icon-active");
-        }
+        toggleBox(sportsTile,sportsIcon);
     });
     $(".linkAir").on("click", function () {
         var airTile = $(".airTile");
         var airIcon = $("#airIcon");
-        if (airTile.hasClass("hideTile")) {
-            airTile.removeClass("hideTile");
-            airIcon.removeClass("icon-inactive");
-            airIcon.addClass("icon-active");
-        } else {
-            airTile.addClass("hideTile");
-            airIcon.addClass("icon-inactive");
-            airIcon.removeClass("icon-active");
-        }
+        toggleBox(airTile,airIcon);
     });
 
     $(".linkZomato").on("click", function () {
         var zomatoTile = $(".zomatoTile");
         var zomatoIcon = $("#zomatoIcon");
-        if (zomatoTile.hasClass("hideTile")) {
-            zomatoTile.removeClass("hideTile");
-            zomatoIcon.removeClass("icon-inactive");
-            zomatoIcon.addClass("icon-active");
-        } else {
-            zomatoTile.addClass("hideTile");
-            zomatoIcon.addClass("icon-inactive");
-            zomatoIcon.removeClass("icon-active");
-        }
+        toggleBox(zomatoTile,zomatoIcon);
     });
     $(".linkWeather").on("click", function () {
         var weatherTile = $(".weatherTile");
         var weatherIcon = $("#weatherIcon");
-        if (weatherTile.hasClass("hideTile")) {
-            weatherTile.removeClass("hideTile");
-            weatherIcon.removeClass("icon-inactive");
-            weatherIcon.addClass("icon-active");
-        } else {
-            weatherTile.addClass("hideTile");
-            weatherIcon.addClass("icon-inactive");
-            weatherIcon.removeClass("icon-active");
-        }
+        toggleBox(weatherTile,weatherIcon);
     });
 
 });
