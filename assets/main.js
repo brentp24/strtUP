@@ -8,6 +8,7 @@ let airQualityIndexDisplay = [];
 
 displayAQ();
 getSportsGames();
+getLocalStorage();
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
@@ -108,6 +109,151 @@ function printSports() {
 // end George
 
 // Jordan
+//local storage
+$("#saveIcon").on("click", function () {
+    $("#saveIcon").addClass("icon-inactive");
+    setLocalStorage();
+});
+
+function setLocalStorage() {
+    if ($("#unsplashIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("unsplashIcon", "active");
+    } else
+        localStorage.setItem("unsplashIcon", "inactive");
+
+    if ($("#quoteIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("quoteIcon", "active");
+    } else
+        localStorage.setItem("quoteIcon", "inactive");
+
+    if ($("#dictionaryIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("dictionaryIcon", "active");
+    } else
+        localStorage.setItem("dictionaryIcon", "inactive");
+
+    if ($("#holidayIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("holidayIcon", "active");
+    } else
+        localStorage.setItem("holidayIcon", "inactive");
+
+    if ($("#sportsIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("sportsIcon", "active");
+    } else
+        localStorage.setItem("sportsIcon", "inactive");
+
+    if ($("#airIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("airIcon", "active");
+    } else
+        localStorage.setItem("airIcon", "inactive");
+
+    if ($("#zomatoIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("zomatoIcon", "active");
+    } else
+        localStorage.setItem("zomatoIcon", "inactive");
+
+    if ($("#weatherIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("weatherIcon", "active");
+    } else
+        localStorage.setItem("weatherIcon", "inactive");
+}
+
+function getLocalStorage() {
+    var unSplashTile = $(".unSplashTile");
+    var unsplashIcon = $("#unsplashIcon");
+    if (localStorage.getItem("unsplashIcon") === "active") {
+        unSplashTile.removeClass("hideTile");
+        unsplashIcon.removeClass("icon-inactive");
+        unsplashIcon.addClass("icon-active");
+    } else {
+        unSplashTile.addClass("hideTile");
+        unsplashIcon.addClass("icon-inactive");
+        unsplashIcon.removeClass("icon-active");
+    }
+
+    var quoteTile = $(".quoteTile");
+    var quoteIcon = $("#quoteIcon");
+    if (localStorage.getItem("quoteIcon") === "active") {
+        quoteTile.removeClass("hideTile");
+        quoteIcon.removeClass("icon-inactive");
+        quoteIcon.addClass("icon-active");
+    } else {
+        quoteTile.addClass("hideTile");
+        quoteIcon.addClass("icon-inactive");
+        quoteIcon.removeClass("icon-active");
+    }
+
+    var dictionaryTile = $(".dictionaryTile");
+    var dictionaryIcon = $("#dictionaryIcon");
+    if (localStorage.getItem("dictionaryIcon") === "active") {
+        dictionaryTile.removeClass("hideTile");
+        dictionaryIcon.removeClass("icon-inactive");
+        dictionaryIcon.addClass("icon-active");
+    } else {
+        dictionaryTile.addClass("hideTile");
+        dictionaryIcon.addClass("icon-inactive");
+        dictionaryIcon.removeClass("icon-active");
+    }
+
+    var holidayTile = $(".holidayTile");
+    var holidayIcon = $("#holidayIcon");
+    if (localStorage.getItem("holidayIcon") === "active") {
+        holidayTile.removeClass("hideTile");
+        holidayIcon.removeClass("icon-inactive");
+        holidayIcon.addClass("icon-active");
+    } else {
+        holidayTile.addClass("hideTile");
+        holidayIcon.addClass("icon-inactive");
+        holidayIcon.removeClass("icon-active");
+    }
+
+    var sportsTile = $(".sportsTile");
+    var sportsIcon = $("#sportsIcon");
+    if (localStorage.getItem("sportsIcon") === "active") {
+        sportsTile.removeClass("hideTile");
+        sportsIcon.removeClass("icon-inactive");
+        sportsIcon.addClass("icon-active");
+    } else {
+        sportsTile.addClass("hideTile");
+        sportsIcon.addClass("icon-inactive");
+        sportsIcon.removeClass("icon-active");
+    }
+
+    var airTile = $(".airTile");
+    var airIcon = $("#airIcon");
+    if (localStorage.getItem("airIcon") === "active") {
+        airTile.removeClass("hideTile");
+        airIcon.removeClass("icon-inactive");
+        airIcon.addClass("icon-active");
+    } else {
+        airTile.addClass("hideTile");
+        airIcon.addClass("icon-inactive");
+        airIcon.removeClass("icon-active");
+    }
+
+    var zomatoTile = $(".zomatoTile");
+    var zomatoIcon = $("#zomatoIcon");
+    if (localStorage.getItem("zomatoIcon") === "active") {
+        zomatoTile.removeClass("hideTile");
+        zomatoIcon.removeClass("icon-inactive");
+        zomatoIcon.addClass("icon-active");
+    } else {
+        zomatoTile.addClass("hideTile");
+        zomatoIcon.addClass("icon-inactive");
+        zomatoIcon.removeClass("icon-active");
+    }
+
+    var weatherTile = $(".weatherTile");
+    var weatherIcon = $("#weatherIcon");
+    if (localStorage.getItem("weatherIcon") === "active") {
+        weatherTile.removeClass("hideTile");
+        weatherIcon.removeClass("icon-inactive");
+        weatherIcon.addClass("icon-active");
+    } else {
+        weatherTile.addClass("hideTile");
+        weatherIcon.addClass("icon-inactive");
+        weatherIcon.removeClass("icon-active");
+    }
+}
 
 function setBackground() {
     var client_id = "RCxWMwEhzgzUqQu7IsYsENaOYusewqJSRQ2WcPni-Es";
@@ -299,20 +445,20 @@ $(document).ready(function () {
     function getLocation() {
         // Make sure browser supports this feature
         if (navigator.geolocation) {
-          // Provide our showPosition() function to getCurrentPosition
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } 
-        else {
-          alert("Geolocation is not supported by this browser.");
+            // Provide our showPosition() function to getCurrentPosition
+            navigator.geolocation.getCurrentPosition(showPosition);
         }
-      }
-      // This will get called after getCurrentPosition()
-      function showPosition(position) {
+        else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    // This will get called after getCurrentPosition()
+    function showPosition(position) {
         // Grab coordinates from the given object
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-        select(lat, lon); 
-      }
+        select(lat, lon);
+    }
 
     //search city  (help from https://codepen.io/pbairishal/pen/JMOdKz)
     function select(lat, lon) {
@@ -355,21 +501,21 @@ $(document).ready(function () {
 
 
     // Time and Date
-$("#time").text(moment().format('MMMM D, YYYY, h:mm a'));
+    $("#time").text(moment().format('MMMM D, YYYY, h:mm a'));
 
 
-//load items in the burger menu.  
-$(document).ready(function() {
+    //load items in the burger menu.  
+    $(document).ready(function () {
 
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-  
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-  
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function () {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
     });
-  });
 
 
 
