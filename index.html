@@ -20,6 +20,8 @@
                 <i class="far fa-image icon-active" id="unsplashIcon"></i></a>
             <a class="navbar-item linkQuote">
                 <i class="fas fa-quote-right icon-active" id="quoteIcon"></i></a>
+            <a class="navbar-item linkWeather">
+                <i class="fas fa-cloud-sun icon-active" id="weatherIcon"></i></a>
             <a class="navbar-item linkDictionary">
                 <i class="fas fa-book icon-active" id="dictionaryIcon"></i></a>
             <a class="navbar-item linkHoliday">
@@ -30,11 +32,10 @@
                 <i class="fas fa-lungs icon-active" id="airIcon"></i></a>
             <a class="navbar-item linkZomato">
                 <i class="fas fa-utensils icon-active" id="zomatoIcon"></i></a>
-            <a class="navbar-item linkWeather">
-                <i class="fas fa-cloud-sun icon-active" id="weatherIcon"></i></a>
+
+          
 
             <div class="navbar-item navbar-end title time-box" id="time"></div>
-
 
         </div>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -53,11 +54,11 @@
         <div class="tile is-vertical ">
             <div class="tile">
                 <!-- Background -->
-                <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification blueStyle unSplashTile">
-                        <p class="title">Background</p>
-                        <p class="subtitle">Use a keyword to search Unsplash for a new background image.</p>
-                        <div class="field">
+                <div class="tile is-parent is-vertical ">
+                    <article class="tile is-child notification blueStyle unSplashTile box">
+                        <p class="title box-header">Background</p>
+                        <p class="subtitle box-content">Use a keyword to search Unsplash for a new background image.</p>
+                        <div class="field box-content">
                             <label class="label">Enter a keyword:</label>
                             <div class="control">
                                 <input id="backgroundInput" class="input" type="text" placeholder="keyword">
@@ -67,18 +68,18 @@
                         </div>
                     </article>
                     <!-- Quote of the Day -->
-                    <article class="tile is-child greyStyle quoteTile">
-                        <p class="title has-text-white">Quote of the day</p>
-                        <p id="quote"></p>
-                        <p id="quoteAuthor"></p>
+                    <article class="tile is-child greyStyle quoteTile box">
+                        <p class="title has-text-white box-header">Quote of the day</p>
+                        <p id="quote" class="box-content"></p>
+                        <p id="quoteAuthor" class="box-content"></p>
                         <br>
-                        <button id="newQuoteBtn" class="button color-black">New Quote</button>
+                        <button id="newQuoteBtn" class="button color-black box-content">New Quote</button>
                     </article>
                     <!-- Weather -->
-                    <article class="tile is-child notification blackStyle weatherTile">
-                        <p id="cityName" class="title">Weather</p>
-                        <label class="label has-text-white">Search by City Name:</label>
-                        <div class="field-body">
+                    <article class="tile is-child notification blackStyle weatherTile box">
+                        <p id="cityName" class="title box-header">Weather</p>
+                        <label class="label has-text-white box-content">Search by City Name:</label>
+                        <div class="field-body box-content">
                             <div class="field">
                                 <div class="control">
                                     <input id="cityInput" class="input" type="text" placeholder="Name of City">
@@ -148,33 +149,33 @@
 
                     <!-- Dictionary  -->
                     <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification blackStyle dictionaryTile">
-                            <p class="title">Dictionary</p>
-                            <input class="searchedWord input is-small">
+                        <article class="tile is-child notification blackStyle dictionaryTile box">
+                            <p class="title box-header">Dictionary</p>
+                            <input class="searchedWord input is-small box-content">
                             <br>
                             <br>
-                            <button class="button dictionarySearch">Search</button>
+                            <button class="button dictionarySearch box-content">Search</button>
                             <ol class="subtitle definitionWrapper">
                             </ol>
 
                         </article>
                         <!-- Holidays Api  -->
-                        <article class="tile is-child is-vertical greyStyle holidayTile">
-                            <p class="title has-text-white">Upcoming Holiday</p>
-                            <div class="holidayResultsClass"> </div>
-                            <p class="holidayDate"></p>
+                        <article class="tile is-child is-vertical greyStyle holidayTile box">
+                            <p class="title has-text-white box-header">Upcoming Holiday</p>
+                            <div class="holidayResultsClass box-content"> </div>
+                            <p class="holidayDate box-content"></p>
                         </article>
                     </div>
                     <!-- George - Air quality % Sports -->
                     <div class="tile is-parent is-vertical">
-                        <article class="tile is-child is-vertical blueStyle sportsTile">
-                            <p class="title">NBA Game Scores</p>
-                            <div class="sports-scores-container sports-tile" id="scoreContainer"></div>
+                        <article class="tile is-child is-vertical blueStyle sportsTile box">
+                            <p class="title box-header">NBA Game Scores</p>
+                            <div class="sports-scores-container sports-tile box-content" id="scoreContainer"></div>
                         </article>
                         <!-- Air Quality Index -->
-                        <article class="tile is-child blackStyle airTile">
-                            <p class="title has-text-white">Air Quality Index</p>
-                            <p class="aqi-readout">
+                        <article class="tile is-child blackStyle airTile box">
+                            <p class="title has-text-white box-header">Air Quality Index</p>
+                            <p class="aqi-readout box-content">
                                 <span id="airQualityOutput0"></span>
                                 <span class="aqi-readout-box" id="airQualityReadout0"></span>
                             </p>
@@ -194,11 +195,12 @@
 
                 <!-- <div class="tile is-vertical"> -->
 
+
                 <!-- Zomato -->
                 <div class="tile is-parent is-vertical">
-                    <article class="tile is-child greyStyle zomatoTile">
-                        <p class="title has-text-white">Restaurant Search</p>
-                        <div class="field-body">
+                    <article class="tile is-child greyStyle zomatoTile box">
+                        <p class="title has-text-white box-header">Restaurant Search</p>
+                        <div class="field-body box-content">
                             <div class="field">
                                 <!-- Search Fields -->
 

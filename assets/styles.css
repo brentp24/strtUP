@@ -34,6 +34,19 @@
     padding: 15px;
 }
 
+.is-active {
+    position: initial;
+    visibility: initial;
+}
+
+.hideTile {
+    position: absolute;
+    visibility: hidden;
+}
+
+/* end here */
+
+
 .holidayStyle{
     background-color: #706c61;
     color: #ffffff;
@@ -70,12 +83,7 @@ ol {
     background-color: #333333;
     color: #e1f4f3;
 }
-.is-active {
-    display: block;
-}
-.hideTile {
-    display: none;
-}
+
 
 .icon-active{
     padding: .25rem;
@@ -189,6 +197,49 @@ body {
     font-size: .75rem;
 }
 
+/* animation styles */
+.box{
+    opacity: 1;
+    transition: .5s all ease-in-out;
+}
+
+.box-header{
+    opacity: 1;
+    transform: translateY(0px);
+    transition: .7s all ease-in-out;
+}
+
+.box-content{
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 1.2s all ease-in-out;
+}
+
+.box-hide{
+    opacity: 0;
+}
+
+.box-hide .box-content{
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.box-hide .box-header{
+    opacity: 0;
+    transform: translateY(-40px);
+}
+
+.display-hide {
+    position: absolute;
+    visibility: hidden;
+}
+
+.display-show {
+    position: initial;
+    visibility: initial;
+}
+/* end animation styles */
+
 .time-box {
     font-size: 24px;
     padding: .25rem;
@@ -197,4 +248,5 @@ body {
 
     
 }
+
 
