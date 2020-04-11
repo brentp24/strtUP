@@ -354,6 +354,22 @@ $(document).ready(function () {
     }
 
 
+    // Time and Date
+$("#time").text(moment().format('MMMM D, YYYY, h:mm a'));
+
+
+//load items in the burger menu.  
+$(document).ready(function() {
+
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function() {
+  
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+  
+    });
+  });
 
 
 

@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>strtUP</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+        <div class="navbar-brand navbar-menu">
+
+
             <a class="navbar-item linkUnsplash">
                 <i class="far fa-image icon-active" id="unsplashIcon"></i></a>
             <a class="navbar-item linkQuote">
@@ -29,7 +32,20 @@
                 <i class="fas fa-lungs icon-active" id="airIcon"></i></a>
             <a class="navbar-item linkZomato">
                 <i class="fas fa-utensils icon-active" id="zomatoIcon"></i></a>
+
+          
+
+            <div class="navbar-item navbar-end title time-box" id="time"></div>
+
         </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+
+
+
     </nav>
 
 
@@ -179,41 +195,44 @@
 
                 <!-- <div class="tile is-vertical"> -->
 
-                    <!-- Zomato -->
-                    <div class="tile is-parent is-vertical">
-                        <article class="tile is-child greyStyle zomatoTile box">
-                            <p class="title has-text-white box-header">Restaurant Search</p>
-                            <div class="field-body box-content">
-                                <div class="field">
-                                    <!-- Search Fields -->
 
-                                    <label class="label has-text-white">Search Restaurant Nearby <span class="subtitle">(*allow location access*)</span>:</label>
-                                    <div class="control">
-                                        <input id="restaurant-input" class="input" type="text"
-                                            placeholder="Restaurant Details">
-                                    </div>
-                                    <br>
-                                    <div class="control">
-                                        <input id="restaurant-count" class="input" type="text" placeholder="Number of Results">
-                                    </div>
-                                    <br>
-                                    <div class="field">
-                                        <button id="restaurantSearch" class="button color-black">Search</button>
-                                    </div>
+                <!-- Zomato -->
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child greyStyle zomatoTile box">
+                        <p class="title has-text-white box-header">Restaurant Search</p>
+                        <div class="field-body box-content">
+                            <div class="field">
+                                <!-- Search Fields -->
+
+                                <label class="label has-text-white">Search Restaurant Nearby <span
+                                        class="subtitle">(*allow location access*)</span>:</label>
+                                <div class="control">
+                                    <input id="restaurant-input" class="input" type="text"
+                                        placeholder="Restaurant Details">
+                                </div>
+                                <br>
+                                <div class="control">
+                                    <input id="restaurant-count" class="input" type="text"
+                                        placeholder="Number of Results">
+                                </div>
+                                <br>
+                                <div class="field">
+                                    <button id="restaurantSearch" class="button color-black">Search</button>
                                 </div>
                             </div>
-                            <br>
-                            <!-- container for results -->
-                            <div class="container">
-                                <div>
-                                    <div class="message"></div>
-                                </div>
+                        </div>
+                        <br>
+                        <!-- container for results -->
+                        <div class="container">
+                            <div>
+                                <div class="message"></div>
                             </div>
-                        </article>
-                    </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <footer class="columns">
         Hi!
