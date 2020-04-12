@@ -34,19 +34,19 @@
 .blueStyle{
     background-color: #e1f4f3;
     color: #333333;
-    /* padding: 15px; */
+    padding: 15px;
 }
 
 .blackStyle{
     background-color: #333333;
     color: #ffffff;
-    /* padding: 15px; */
+    padding: 15px;
 }
 
 .greyStyle{
     background-color: #706c61;
     color: #ffffff;
-    /* padding: 15px; */
+    padding: 15px;
 }
 
 .is-active {
@@ -128,7 +128,7 @@ ol {
 
 .navbar-burger.is-active span {
     position: relative;
-    left: calc(50% - 5px);
+    left: 18px;
     
 }
 
@@ -142,7 +142,6 @@ ol {
     top: 18px;
 
 }
-
 
 
 
