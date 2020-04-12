@@ -8,6 +8,7 @@ let airQualityIndexDisplay = [];
 
 displayAQ();
 getSportsGames();
+getLocalStorage();
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
@@ -108,6 +109,192 @@ function printSports() {
 // end George
 
 // Jordan
+$("#saveIcon").on("click", function () {
+    setLocalStorage();
+    $("#saveIcon").addClass("icon-inactive");
+})
+
+function setLocalStorage() {
+    if ($("#unsplashIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("unsplash", "active");
+    } else if ($("#unsplashIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("unsplash", "inactive");
+    }
+    if ($("#quoteIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("quote", "active");
+    } else if ($("#quoteIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("quote", "inactive");
+    }
+    if ($("#weatherIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("weather", "active");
+    } else if ($("#weatherIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("weather", "inactive");
+    }
+    if ($("#dictionaryIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("dictionary", "active");
+    } else if ($("#dictionaryIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("dictionary", "inactive");
+    }
+    if ($("#holidayIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("holiday", "active");
+    } else if ($("#holidayIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("holiday", "inactive");
+    }
+    if ($("#sportsIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("sports", "active");
+    } else if ($("#sportsIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("sports", "inactive");
+    }
+    if ($("#airIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("air", "active");
+    } else if ($("#airIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("air", "inactive");
+    }
+    if ($("#zomatoIcon").hasClass("icon-active") === true) {
+        localStorage.setItem("zomato", "active");
+    } else if ($("#zomatoIcon").hasClass("icon-inactive") === true) {
+        localStorage.setItem("zomato", "inactive");
+    }
+}
+
+function getLocalStorage() {
+    if (localStorage.getItem("unsplash") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".unSplashTile").data("active", "inactive");
+        $(".unSplashTile").removeClass("display-hide");
+        $(".unSplashTile").addClass("display-show");
+        $("#unsplashIcon").removeClass("icon-inactive");
+        $("#unsplashIcon").addClass("icon-active");
+    } else if (localStorage.getItem("unsplash") === "inactive") {
+        $(".unSplashTile").toggleClass("box-hide");
+        $(".unSplashTile").data("active", "active");
+        $("#unsplashIcon").addClass("icon-inactive");
+        $("#unsplashIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".unSplashTile").addClass("display-hide");
+            $(".unSplashTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("quote") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".quoteTile").data("active", "inactive");
+        $(".quoteTile").removeClass("display-hide");
+        $(".quoteTile").addClass("display-show");
+        $("#quoteIcon").removeClass("icon-inactive");
+        $("#quoteIcon").addClass("icon-active");
+    } else if (localStorage.getItem("quote") === "inactive") {
+        $(".quoteTile").toggleClass("box-hide");
+        $(".quoteTile").data("active", "active");
+        $("#quoteIcon").addClass("icon-inactive");
+        $("#quoteIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".quoteTile").addClass("display-hide");
+            $(".quoteTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("weather") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".weatherTile").data("active", "inactive");
+        $(".weatherTile").removeClass("display-hide");
+        $(".weatherTile").addClass("display-show");
+        $("#weatherIcon").removeClass("icon-inactive");
+        $("#weatherIcon").addClass("icon-active");
+    } else if (localStorage.getItem("weather") === "inactive") {
+        $(".weatherTile").toggleClass("box-hide");
+        $(".weatherTile").data("active", "active");
+        $("#weatherIcon").addClass("icon-inactive");
+        $("#weatherIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".weatherTile").addClass("display-hide");
+            $(".weatherTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("dictionary") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".dictionaryTile").data("active", "inactive");
+        $(".dictionaryTile").removeClass("display-hide");
+        $(".dictionaryTile").addClass("display-show");
+        $("#dictionaryIcon").removeClass("icon-inactive");
+        $("#dictionaryIcon").addClass("icon-active");
+    } else if (localStorage.getItem("dictionary") === "inactive") {
+        $(".dictionaryTile").toggleClass("box-hide");
+        $(".dictionaryTile").data("active", "active");
+        $("#dictionaryIcon").addClass("icon-inactive");
+        $("#dictionaryIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".dictionaryTile").addClass("display-hide");
+            $(".dictionaryTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("holiday") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".holidayTile").data("active", "inactive");
+        $(".holidayTile").removeClass("display-hide");
+        $(".holidayTile").addClass("display-show");
+        $("#holidayIcon").removeClass("icon-inactive");
+        $("#holidayIcon").addClass("icon-active");
+    } else if (localStorage.getItem("holiday") === "inactive") {
+        $(".holidayTile").toggleClass("box-hide");
+        $(".holidayTile").data("active", "active");
+        $("#holidayIcon").addClass("icon-inactive");
+        $("#holidayIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".holidayTile").addClass("display-hide");
+            $(".holidayTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("sports") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".sportsTile").data("active", "inactive");
+        $(".sportsTile").removeClass("display-hide");
+        $(".sportsTile").addClass("display-show");
+        $("#sportsIcon").removeClass("icon-inactive");
+        $("#sportsIcon").addClass("icon-active");
+    } else if (localStorage.getItem("sports") === "inactive") {
+        $(".sportsTile").toggleClass("box-hide");
+        $(".sportsTile").data("active", "active");
+        $("#sportsIcon").addClass("icon-inactive");
+        $("#sportsIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".sportsTile").addClass("display-hide");
+            $(".sportsTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("zomato") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".zomatoTile").data("active", "inactive");
+        $(".zomatoTile").removeClass("display-hide");
+        $(".zomatoTile").addClass("display-show");
+        $("#zomatoIcon").removeClass("icon-inactive");
+        $("#zomatoIcon").addClass("icon-active");
+    } else if (localStorage.getItem("zomato") === "inactive") {
+        $(".zomatoTile").toggleClass("box-hide");
+        $(".zomatoTile").data("active", "active");
+        $("#zomatoIcon").addClass("icon-inactive");
+        $("#zomatoIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".zomatoTile").addClass("display-hide");
+            $(".zomatoTile").removeClass("display-show");
+        }, 350);
+    }
+    if (localStorage.getItem("air") === "active") {
+        //$(".unSplashTile").toggleClass("box-hide");
+        $(".airTile").data("active", "inactive");
+        $(".airTile").removeClass("display-hide");
+        $(".airTile").addClass("display-show");
+        $("#airIcon").removeClass("icon-inactive");
+        $("#airIcon").addClass("icon-active");
+    } else if (localStorage.getItem("air") === "inactive") {
+        $(".airTile").toggleClass("box-hide");
+        $(".airTile").data("active", "active");
+        $("#airIcon").addClass("icon-inactive");
+        $("#airIcon").removeClass("icon-active");
+        setTimeout(() => {
+            $(".airTile").addClass("display-hide");
+            $(".airTile").removeClass("display-show");
+        }, 350);
+    }
+}
 
 function setBackground() {
     var client_id = "RCxWMwEhzgzUqQu7IsYsENaOYusewqJSRQ2WcPni-Es";
@@ -299,20 +486,20 @@ $(document).ready(function () {
     function getLocation() {
         // Make sure browser supports this feature
         if (navigator.geolocation) {
-          // Provide our showPosition() function to getCurrentPosition
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } 
-        else {
-          alert("Geolocation is not supported by this browser.");
+            // Provide our showPosition() function to getCurrentPosition
+            navigator.geolocation.getCurrentPosition(showPosition);
         }
-      }
-      // This will get called after getCurrentPosition()
-      function showPosition(position) {
+        else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    // This will get called after getCurrentPosition()
+    function showPosition(position) {
         // Grab coordinates from the given object
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-        select(lat, lon); 
-      }
+        select(lat, lon);
+    }
 
     //search city  (help from https://codepen.io/pbairishal/pen/JMOdKz)
     function select(lat, lon) {
@@ -355,137 +542,137 @@ $(document).ready(function () {
 
 
     // Time and Date
-$("#time").text(moment().format('MMMM D, YYYY, h:mm a'));
+    $("#time").text(moment().format('MMMM D, YYYY, h:mm a'));
 
 
-//load items in the burger menu.  
-$(document).ready(function() {
+    //load items in the burger menu.  
+    $(document).ready(function () {
 
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-  
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-  
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function () {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
     });
-  });
 
 
 
     //End Brent's JS
 
-//tile animations
-// const splashBox = $(".unSplashTile");
-// const quoteBox = $(".quoteTile");
-// const weatherBox = $(".weatherTile");
-// const dictionaryBox = $(".dictionaryTile");
-// const holidayBox = $(".holidayTile");
-// const zomatoBox = $(".zomatoTile");
-// const sportsBox = $(".sportsTile");
-// const airBox = $(".airTile");
+    //tile animations
+    // const splashBox = $("..unSplashTile");
+    // const quoteBox = $(".quoteTile");
+    // const weatherBox = $(".weatherTile");
+    // const dictionaryBox = $(".dictionaryTile");
+    // const holidayBox = $(".holidayTile");
+    // const zomatoBox = $(".zomatoTile");
+    // const sportsBox = $(".sportsTile");
+    // const airBox = $(".airTile");
 
 
-// $("#unsplashIcon").click(function(){
-//     toggleBox(splashBox);
-// });
+    // $("#unsplashIcon").click(function(){
+    //     toggleBox(splashBox);
+    // });
 
-// $("#quoteIcon").click(function(){
-//     toggleBox(quoteBox);
-// });
+    // $("#quoteIcon").click(function(){
+    //     toggleBox(quoteBox);
+    // });
 
-// $("#dictionaryIcon").click(function(){
-//     toggleBox(dictionaryBox);
-// });
+    // $("#dictionaryIcon").click(function(){
+    //     toggleBox(dictionaryBox);
+    // });
 
-// $("#holidayIcon").click(function(){
-//     toggleBox(holidayBox);
-// });
+    // $("#holidayIcon").click(function(){
+    //     toggleBox(holidayBox);
+    // });
 
-// $("#sportsIcon").click(function(){
-//     toggleBox(sportsBox);
-// });
+    // $("#sportsIcon").click(function(){
+    //     toggleBox(sportsBox);
+    // });
 
-// $("#airIcon").click(function(){
-//     toggleBox(airBox);
-// });
+    // $("#airIcon").click(function(){
+    //     toggleBox(airBox);
+    // });
 
-// $("#zomatoIcon").click(function(){
-//     toggleBox(zomatoBox);
-// });
+    // $("#zomatoIcon").click(function(){
+    //     toggleBox(zomatoBox);
+    // });
 
-// $("#weatherIcon").click(function(){
-//     toggleBox(weatherBox);
-// });
+    // $("#weatherIcon").click(function(){
+    //     toggleBox(weatherBox);
+    // });
 
-function toggleBox(boxSelection,iconSelection){
-    if(boxSelection.data("active") == "active"){
-        boxSelection.toggleClass("box-hide");
-        boxSelection.data("active" , "inactive");
-        iconSelection.removeClass("icon-inactive");
-        iconSelection.addClass("icon-active");
-        displayShow(boxSelection);
-    } else{
-        boxSelection.toggleClass("box-hide");
-        boxSelection.data("active" , "active");
-        iconSelection.addClass("icon-inactive");
-        iconSelection.removeClass("icon-active");
-        setTimeout(() => displayHide(boxSelection), 350);
+    function toggleBox(boxSelection, iconSelection) {
+        if (boxSelection.data("active") == "active") {
+            boxSelection.toggleClass("box-hide");
+            boxSelection.data("active", "inactive");
+            iconSelection.removeClass("icon-inactive");
+            iconSelection.addClass("icon-active");
+            displayShow(boxSelection);
+        } else {
+            boxSelection.toggleClass("box-hide");
+            boxSelection.data("active", "active");
+            iconSelection.addClass("icon-inactive");
+            iconSelection.removeClass("icon-active");
+            setTimeout(() => displayHide(boxSelection), 350);
+        }
+
     }
-    
-}
 
-function displayHide(boxSelection){
-    boxSelection.addClass("display-hide");
-    boxSelection.removeClass("display-show");
-}
+    function displayHide(boxSelection) {
+        boxSelection.addClass("display-hide");
+        boxSelection.removeClass("display-show");
+    }
 
-function displayShow(boxSelection){
-    boxSelection.removeClass("display-hide");
-    boxSelection.addClass("display-show");
-}
+    function displayShow(boxSelection) {
+        boxSelection.removeClass("display-hide");
+        boxSelection.addClass("display-show");
+    }
 
     // NavBar hide and show listeners
     $(".linkUnsplash").on("click", function () {
         var unSplashTile = $(".unSplashTile");
         var unsplashIcon = $("#unsplashIcon");
-        toggleBox(unSplashTile,unsplashIcon);    
+        toggleBox(unSplashTile, unsplashIcon);
     });
     $(".linkQuote").on("click", function () {
         var quoteTile = $(".quoteTile");
         var quoteIcon = $("#quoteIcon");
-        toggleBox(quoteTile,quoteIcon);
+        toggleBox(quoteTile, quoteIcon);
     });
     $(".linkDictionary").on("click", function () {
         var dictionaryTile = $(".dictionaryTile");
         var dictionaryIcon = $("#dictionaryIcon");
-        toggleBox(dictionaryTile,dictionaryIcon);
+        toggleBox(dictionaryTile, dictionaryIcon);
     });
     $(".linkHoliday").on("click", function () {
         var holidayTile = $(".holidayTile");
         var holidayIcon = $("#holidayIcon");
-        toggleBox(holidayTile,holidayIcon);
+        toggleBox(holidayTile, holidayIcon);
     });
     $(".linkSports").on("click", function () {
         var sportsTile = $(".sportsTile");
         var sportsIcon = $("#sportsIcon");
-        toggleBox(sportsTile,sportsIcon);
+        toggleBox(sportsTile, sportsIcon);
     });
     $(".linkAir").on("click", function () {
         var airTile = $(".airTile");
         var airIcon = $("#airIcon");
-        toggleBox(airTile,airIcon);
+        toggleBox(airTile, airIcon);
     });
 
     $(".linkZomato").on("click", function () {
         var zomatoTile = $(".zomatoTile");
         var zomatoIcon = $("#zomatoIcon");
-        toggleBox(zomatoTile,zomatoIcon);
+        toggleBox(zomatoTile, zomatoIcon);
     });
     $(".linkWeather").on("click", function () {
         var weatherTile = $(".weatherTile");
         var weatherIcon = $("#weatherIcon");
-        toggleBox(weatherTile,weatherIcon);
+        toggleBox(weatherTile, weatherIcon);
     });
 
 });
