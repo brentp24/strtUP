@@ -1,3 +1,18 @@
+/* 
+.columns {
+	margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+
+	.columns {
+	    margin-left: -2rem;
+	    margin-right: -2rem;
+	    margin-top: -2rem;
+	}
+
+} */
+
 .color-black{
     background-color: #333333;
     color: #ffffff;
@@ -19,19 +34,19 @@
 .blueStyle{
     background-color: #e1f4f3;
     color: #333333;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .blackStyle{
     background-color: #333333;
     color: #ffffff;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .greyStyle{
     background-color: #706c61;
     color: #ffffff;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .is-active {
@@ -106,6 +121,31 @@ ol {
 .navbar-link{
     background-color: white;
 }
+
+.navbar-burger.is-active{
+    background-color: white;
+}
+
+.navbar-burger.is-active span {
+    position: relative;
+    left: calc(50% - 5px);
+    
+}
+
+.navbar-burger.is-active span:nth-child(3) {
+    top: 26px;
+
+}
+
+.navbar-burger.is-active span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+    top: 18px;
+
+}
+
+
+
+
 html { 
     background: no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -161,7 +201,7 @@ html {
     border-radius: 3px;
     height: 150px;
     /* background-color: red; */
-    overflow: scroll;
+    overflow: scroll; 
     overflow-x: hidden;
 }
 /* .sports-scores-container::-webkit-scrollbar{
@@ -242,7 +282,7 @@ body {
 
 .time-box {
     font-size: 24px;
-    padding: .25rem;
+    /* padding: .25rem; */
     color: #333333;
 
 
