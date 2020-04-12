@@ -9,6 +9,22 @@ let airQualityIndexDisplay = [];
 displayAQ();
 getSportsGames();
 getLocalStorage();
+welcomeTileDisplay()
+
+function welcomeTileDisplay(){
+    const welcomeTile = $(".welcome-tile");
+    let checkArray = [];
+    for(item in localStorage){
+        console.log(localStorage[item]);
+        if(typeof(localStorage[item]) == "string"){
+            checkArray.push(localStorage[item]);
+        }
+    }
+    
+    if(!checkArray.every((a) => a === "inactive")){
+        welcomeTile.toggleClass("box-hide display-hide");
+    }
+}
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
@@ -562,49 +578,6 @@ $(document).ready(function () {
 
     //End Brent's JS
 
-    //tile animations
-    // const splashBox = $("..unSplashTile");
-    // const quoteBox = $(".quoteTile");
-    // const weatherBox = $(".weatherTile");
-    // const dictionaryBox = $(".dictionaryTile");
-    // const holidayBox = $(".holidayTile");
-    // const zomatoBox = $(".zomatoTile");
-    // const sportsBox = $(".sportsTile");
-    // const airBox = $(".airTile");
-
-
-    // $("#unsplashIcon").click(function(){
-    //     toggleBox(splashBox);
-    // });
-
-    // $("#quoteIcon").click(function(){
-    //     toggleBox(quoteBox);
-    // });
-
-    // $("#dictionaryIcon").click(function(){
-    //     toggleBox(dictionaryBox);
-    // });
-
-    // $("#holidayIcon").click(function(){
-    //     toggleBox(holidayBox);
-    // });
-
-    // $("#sportsIcon").click(function(){
-    //     toggleBox(sportsBox);
-    // });
-
-    // $("#airIcon").click(function(){
-    //     toggleBox(airBox);
-    // });
-
-    // $("#zomatoIcon").click(function(){
-    //     toggleBox(zomatoBox);
-    // });
-
-    // $("#weatherIcon").click(function(){
-    //     toggleBox(weatherBox);
-    // });
-
     function toggleBox(boxSelection, iconSelection) {
         if (boxSelection.data("active") == "active") {
             boxSelection.toggleClass("box-hide");
@@ -676,8 +649,4 @@ $(document).ready(function () {
     });
 
 });
-
-
-
-//End Brent's JS
 
