@@ -9,6 +9,22 @@ let airQualityIndexDisplay = [];
 displayAQ();
 getSportsGames();
 getLocalStorage();
+welcomeTileCheck();
+
+function welcomeTileCheck(){
+    const welcomeTile = $(".welcome-tile");
+    let checkArray = [];
+    for(item in localStorage){
+        // console.log(localStorage[item]);
+        if(typeof(localStorage[item]) == "string"){
+            checkArray.push(localStorage[item]);
+        }
+    }
+    
+    if(!checkArray.every((a) => a === "inactive")){
+        welcomeTile.toggleClass("box-hide display-hide");
+    }
+}
 
 function displayAQ() {
     let aqiCityArray = ["Salt Lake City", "New York-Northern New Jersey-Long Island", "Los Angeles-Long Beach-Santa Ana"];
@@ -396,7 +412,9 @@ function displayCityInfo() {
         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey,
         method: "GET"
     }).then(function (response) {
-        //console.log(response);
+
+        // console.log(response);
+
         //day1
         var date1 = new Date(response.list[3].dt * 1000).toLocaleDateString();
         var icon1 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[3].weather[0].icon + ".png");
@@ -562,49 +580,6 @@ $(document).ready(function () {
 
     //End Brent's JS
 
-    //tile animations
-    // const splashBox = $("..unSplashTile");
-    // const quoteBox = $(".quoteTile");
-    // const weatherBox = $(".weatherTile");
-    // const dictionaryBox = $(".dictionaryTile");
-    // const holidayBox = $(".holidayTile");
-    // const zomatoBox = $(".zomatoTile");
-    // const sportsBox = $(".sportsTile");
-    // const airBox = $(".airTile");
-
-
-    // $("#unsplashIcon").click(function(){
-    //     toggleBox(splashBox);
-    // });
-
-    // $("#quoteIcon").click(function(){
-    //     toggleBox(quoteBox);
-    // });
-
-    // $("#dictionaryIcon").click(function(){
-    //     toggleBox(dictionaryBox);
-    // });
-
-    // $("#holidayIcon").click(function(){
-    //     toggleBox(holidayBox);
-    // });
-
-    // $("#sportsIcon").click(function(){
-    //     toggleBox(sportsBox);
-    // });
-
-    // $("#airIcon").click(function(){
-    //     toggleBox(airBox);
-    // });
-
-    // $("#zomatoIcon").click(function(){
-    //     toggleBox(zomatoBox);
-    // });
-
-    // $("#weatherIcon").click(function(){
-    //     toggleBox(weatherBox);
-    // });
-
     function toggleBox(boxSelection, iconSelection) {
         if (boxSelection.data("active") == "active") {
             boxSelection.toggleClass("box-hide");
@@ -676,8 +651,4 @@ $(document).ready(function () {
     });
 
 });
-
-
-
-//End Brent's JS
 
