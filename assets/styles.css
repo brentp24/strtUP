@@ -129,6 +129,25 @@ ol {
     background-color: white;
 }
 
+.navbar-menu.is-active{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar-burger{
+    border-radius: 4px;
+    background-color: #e1f4f3;
+    height: 2.25rem;
+    width: 2.25rem;
+}
+
+.navbar-burger:hover{
+    border-radius: 4px;
+    background-color: #c3dfde;
+    height: 2.25rem;
+    width: 2.25rem;
+}
+
 .navbar-burger.is-active{
     background-color: white;
 }
@@ -159,6 +178,11 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+
+body{
+    overflow-x: hidden;
+}
+
 .tileWrapper{
     display: none;
 }
@@ -287,6 +311,7 @@ body {
 /* end animation styles */
 
 .time-box {
+    -webkit-text-stroke: 1px #e1f4f3;
     font-size: 24px;
     /* padding: .25rem; */
     color: #333333;
