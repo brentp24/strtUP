@@ -3,7 +3,14 @@
     color: #ffffff;
     border: none
 }
-
+button:hover{
+    color: #ffffff;
+    background-color: whitesmoke;
+}
+button:active{
+    border: 1px thin blue;
+    color: white
+}
 .color-gray{
     background-color: #706c61;
 }

@@ -412,7 +412,9 @@ function displayCityInfo() {
         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey,
         method: "GET"
     }).then(function (response) {
+
         // console.log(response);
+
         //day1
         var date1 = new Date(response.list[3].dt * 1000).toLocaleDateString();
         var icon1 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[3].weather[0].icon + ".png");
