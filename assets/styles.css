@@ -178,6 +178,11 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+
+body{
+    overflow-x: hidden;
+}
+
 .tileWrapper{
     display: none;
 }
