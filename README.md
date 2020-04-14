@@ -1,6 +1,6 @@
 # strtUP
 ​
-![Screenshot of Application](https://via.placeholder.com/680x340/999999/efefef/?text=Screenshot)
+<img src="./assets/images/strtup.png">
 
 strtUP is a browser dashboard that incorporates widgets that reference news, sports, games, social media and more! The dashboard puts your most frequently accessed information all in one place for your convenience.
 ​
