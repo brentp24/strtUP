@@ -56,7 +56,7 @@ List the tech you used to get your application to work:
 |:----------------------------------------:| -------------------- | 
 | [Brent Peterson](https://github.com/brentp24) | Restaurant search application, design and bug fixes |
 | [George Gombert](https://github.com/georgegombert)  | Site animations, Tile layout, API integration`   |
-| [Jordan Johnson](https://github.com/JINJ95) | API 2 integration    |
+| [Jordan Johnson](https://github.com/JINJ95) | Weather, Quote, Background Widgets. Local Storage    |
 | [Ben Knight](https://github.com/BenBKnight) | Dictionary and holiday applications, navbar, basic function of hide/show widgets    |
 ​
 ### Roadmap 
